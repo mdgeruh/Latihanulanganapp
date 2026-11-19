@@ -1,10 +1,10 @@
-# Latihan Ulangan Kelas 1 SD (v0.21)
+# Latihan Ulangan Kelas 1 SD (v0.32)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
 ## Cara pakai
 Ada dua cara:
-1. **Buka langsung:** buka `index.html` di browser HP/laptop. Tidak perlu internet (font rounded hanya tampil jika online). Cara ini tidak bisa dipasang sebagai aplikasi.
+1. **Buka langsung:** buka `index.html` di browser HP/laptop. Tidak perlu internet (font rounded hanya tampil jika online, kecuali berkas font dipasang di folder `fonts`). Cara ini tidak bisa dipasang sebagai aplikasi.
 2. **Pasang sebagai aplikasi (PWA):** unggah SEMUA isi zip ini ke hosting HTTPS (misalnya Netlify Drop atau GitHub Pages), lalu buka alamatnya sekali saat online. Android Chrome: menu titik tiga, "Pasang aplikasi". iPhone Safari: Bagikan, "Tambah ke Layar Utama". Setelah itu aplikasi jalan offline.
 
 Data tersimpan di browser perangkat. Untuk memindahkan data ke perangkat lain, pakai "Simpan cadangan" dan "Pulihkan cadangan" di Layar pendamping.
@@ -17,6 +17,8 @@ Data tersimpan di browser perangkat. Untuk memindahkan data ke perangkat lain, p
 - Apakah anak mau mengulang? Catat bagian yang membosankan atau sulit.
 
 ## Menambah soal
+Soal Penjumlahan dan Pengurangan juga dibuat otomatis oleh fungsi `gen(bab, jumlah)`; ubah batas angkanya di fungsi itu.
+
 Soal ada di bagian `D` pada file HTML dan semuanya pilihan ganda dengan 4 opsi (a sampai d). Soal dasar ada di `D.<mapel>.q`: `[gambar, pertanyaan, [benar, pengecoh, pengecoh], catatan]`; pengecoh ke-4 ada di `EX`. Soal tambahan ada di `D.<mapel>.x` memakai fungsi `P(bab, gambar, pertanyaan, [benar, pengecoh1, pengecoh2, pengecoh3], catatan)`. Jawaban benar selalu ditulis pertama; urutan opsi diacak otomatis saat soal tampil. Nomor bab mulai dari 0, nama bab ada di `D.<mapel>.bab`.
 
 ## Roadmap
@@ -25,10 +27,11 @@ Soal ada di bagian `D` pada file HTML dan semuanya pilihan ganda dengan 4 opsi (
 - [x] Fase 3: layar pendamping dengan PIN opsional (atur jumlah soal, batas waktu, suara; kunci jawaban; ringkasan soal yang perlu didampingi)
 - [x] Fase 4: profil anak, riwayat nilai, lencana, grafik, latihan ulang soal sulit, cetak PDF
 - [x] Fase 5: PWA (bisa dipasang dan offline), cadangan data
+- [x] Fase 6-16: lihat ROADMAP.md
 - [ ] Uji coba dengan 1 anak, yaitu anak pengguna sendiri (dilakukan pengguna)
 
 ## Layar pendamping
-Dari menu utama, ketuk "Layar pendamping" untuk mengatur jumlah soal (5/10/semua), batas waktu (tanpa/5/10 menit), kecepatan suara, dan baca soal otomatis. Di layar yang sama ada daftar soal yang paling sering salah dan kunci jawaban semua soal. Pengaturan tersimpan di browser.
+Dari menu utama, ketuk "Layar pendamping" untuk mengatur jumlah soal (5/10/15/20/semua), batas waktu (tanpa/5/10 menit), kecepatan suara, dan baca soal otomatis. Di layar yang sama ada daftar soal yang paling sering salah dan kunci jawaban semua soal. Pengaturan tersimpan di browser.
 
 ## PIN Layar pendamping
 Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika aktif, layar itu (kunci jawaban, pengaturan, dan tombol catatan pendamping) tidak bisa dibuka tanpa PIN. PIN ini hanya pengaman sederhana untuk anak, bukan keamanan data. Jika lupa PIN, satu-satunya cara adalah menghapus data situs di pengaturan browser (nilai ikut terhapus), jadi simpan cadangan data dulu.
@@ -41,6 +44,63 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 Ketuk tombol **?** di menu utama (sebelah "Pendamping") atau di layar pilih nama anak untuk melihat versi aplikasi dan daftar perubahan terakhir. Daftar ini ada di variabel `CHG` pada index.html; tambahkan entri baru di bagian paling atas setiap rilis dan ubah `VER`.
 
 ## Changelog
+### v0.32
+- Dukungan font di dalam aplikasi: `@font-face` "Baloo 2 Lokal" membaca `fonts/baloo2.woff2` atau `fonts/baloo2.ttf`; berkas font belum disertakan (lihat `fonts/PETUNJUK.txt` dan `unduh-font.sh`)
+- Tanpa berkas font, tampilan sama seperti sebelumnya (font Google saat online, font sistem saat offline); font dari folder tersimpan otomatis di cache offline setelah dibuka sekali saat online
+- Versi cache offline dinaikkan ke ulangan-v0.32
+
+### v0.31
+- Pilihan Ukuran huruf (Normal, Besar 115%, Sangat besar 130%) di Layar pendamping; berlaku untuk semua layar aplikasi
+- Kontras warna: tombol berwarna di mode gelap memakai teks gelap (sebelumnya putih di warna pastel, sulit dibaca); teks umpan balik benar/salah di mode terang dibuat lebih gelap (kontras di atas 4,5:1)
+- Label pembaca layar: gambar soal, pilihan jawaban ("Pilihan a: ..."), bilah kemajuan, dan tombol pengaturan (aria-pressed)
+- Versi cache offline dinaikkan ke ulangan-v0.31
+
+### v0.30
+- ID soal kini dibuat dari isi soal (gambar + pertanyaan + jawaban benar), bukan dari urutan; catatan soal sulit tidak rusak lagi saat soal ditambah, dihapus, atau diurutkan ulang
+- Catatan soal sulit lama dan berkas cadangan lama diubah otomatis ke ID baru sekali saja
+- Bila teks pertanyaan, gambar, atau jawaban benar suatu soal diubah, soal itu dianggap soal baru (catatan salahnya mulai dari nol); mengubah pengecoh atau catatan pendamping tidak memengaruhi
+- Versi cache offline dinaikkan ke ulangan-v0.30
+
+### v0.29
+- Pilihan jumlah soal di Layar pendamping: 5, 10, 15, 20, atau semua (sebelumnya 5, 10, semua)
+- Versi cache offline dinaikkan ke ulangan-v0.29
+
+### v0.28
+- Perbaikan baca soal otomatis: bila suara sebelumnya masih berjalan, dihentikan dulu lalu soal baru dibacakan setelah jeda 150 ms (Chrome sering membuang suara jika dihentikan dan dimulai pada saat yang sama); suara bahasa Indonesia dipilih langsung bila ada
+- Versi cache offline dinaikkan ke ulangan-v0.28
+
+### v0.27
+- Ringkasan 7 hari di Layar pendamping: jumlah latihan, hari aktif, rata-rata nilai (dibanding minggu lalu), rata-rata per pelajaran dengan tanda naik/turun, dan satu bab yang paling perlu diulang
+- Tombol Bagikan ringkasan: membuka menu bagikan perangkat, atau menyalin teks bila tidak tersedia
+- Versi cache offline dinaikkan ke ulangan-v0.27
+
+### v0.26
+- Efek suara pendek (nada buatan, tanpa berkas suara): benar, salah (lembut), hasil bagus (nilai 5 ke atas), dan stiker baru
+- Pengaturan Efek suara Hidup/Mati di Layar pendamping (awal: hidup); di iPhone suara baru berbunyi setelah anak mengetuk layar, dan tombol silent perangkat bisa membisukannya
+- Versi cache offline dinaikkan ke ulangan-v0.26
+
+### v0.25
+- Target latihan per hari (Mati/1/2/3, awal 2) di Layar pendamping; menu menampilkan kemajuan hari ini dan jumlah hari berturut-turut
+- Stiker baru (maksimal satu per hari) saat target tercapai; koleksi tampil di Progres dan stiker baru muncul di layar hasil
+- Riwayat nilai disimpan sampai 120 latihan per anak (sebelumnya 60)
+- Versi cache offline dinaikkan ke ulangan-v0.25
+
+### v0.24
+- Bab baru Bahasa Indonesia: Membaca kalimat, 12 soal dengan bacaan 2-3 kalimat lalu pertanyaan; suara pembaca membacakan bacaan lebih dulu
+- Soal bacaan dibuat dengan `B(bab, bacaan, pertanyaan, [benar, pengecoh1, pengecoh2, pengecoh3], catatan)` di `D.ind.x`
+- Versi cache offline dinaikkan ke ulangan-v0.24
+
+### v0.23
+- Soal Penjumlahan dan Pengurangan ditambah 10 soal otomatis tiap latihan (angka acak sampai 20, pengecoh dekat jawaban); di Campuran Matematika ditambah 5 + 5
+- Soal otomatis tidak masuk kunci jawaban, catatan soal sulit, dan latihan ulang (soalnya berubah tiap kali)
+- Versi cache offline dinaikkan ke ulangan-v0.23
+
+### v0.22
+- Peringatan jika data gagal disimpan; pengingat cadangan jika lebih dari 2 minggu (dan minimal 10 latihan); penyimpanan dimintakan permanen
+- Pemberitahuan "Versi baru tersedia" dengan tombol Muat ulang
+- Pesan jelas jika perangkat tidak punya suara bahasa Indonesia
+- Versi cache offline dinaikkan ke ulangan-v0.22
+
 ### v0.21
 - Tombol ? dipindah ke pojok kanan atas layar (menu dan layar pilih anak)
 - Versi cache offline dinaikkan ke ulangan-v0.21
