@@ -1,0 +1,30 @@
+{
+ "name": "Latihan Ulangan Kelas 1",
+ "short_name": "Ulangan SD",
+ "description": "Latihan ulangan SD kelas 1: Matematika, Bahasa Indonesia, Pendidikan Pancasila",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "lang": "id",
+ "background_color": "#EAF4FF",
+ "theme_color": "#2F6FDE",
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

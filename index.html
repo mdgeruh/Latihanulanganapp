@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan Ulangan Kelas 1 SD</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2F6FDE">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap">
+<style>
+:root{--bg:#EAF4FF;--paper:#fff;--ink:#1F2A5C;--mute:#5B6690;--line:#C9DDF5;--mtk:#2F6FDE;--ind:#E8503A;--pan:#1E9E6A;--ok:#1E9E6A;--okbg:#DDF6E9;--no:#C2570C;--nobg:#FFE9D6;--star:#FFB800;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121A33;--paper:#1B2547;--ink:#F1F4FF;--mute:#A9B4DD;--line:#2E3B6B;--mtk:#6FA2FF;--ind:#FF8A76;--pan:#4BD39A;--ok:#4BD39A;--okbg:#17382F;--no:#FFB27A;--nobg:#4A2F1D;--star:#FFC93C}}
+:root[data-theme="dark"]{--bg:#121A33;--paper:#1B2547;--ink:#F1F4FF;--mute:#A9B4DD;--line:#2E3B6B;--mtk:#6FA2FF;--ind:#FF8A76;--pan:#4BD39A;--ok:#4BD39A;--okbg:#17382F;--no:#FFB27A;--nobg:#4A2F1D;--star:#FFC93C}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Trebuchet MS","Comic Sans MS",system-ui,sans-serif;font-size:20px;line-height:1.3;min-height:100vh;
+background-image:repeating-linear-gradient(transparent 0 35px,color-mix(in srgb,var(--line) 55%,transparent) 35px 36px)}
+#app{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:40px;line-height:1.05;margin:8px 0 4px;font-weight:800}
+h1 span{display:block;font-size:26px;color:var(--mute);font-weight:700}
+h2{font-size:28px;margin:8px 0 10px;font-weight:700;line-height:1.2}
+.sub{margin:0 0 18px;color:var(--mute)}
+.grid{display:grid;gap:14px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:4px solid var(--mtk);outline-offset:3px}
+.card{display:grid;grid-template-columns:64px 1fr;align-items:center;column-gap:14px;text-align:left;background:var(--paper);border:3px solid var(--c);border-bottom-width:8px;border-radius:20px;padding:12px 16px}
+.card:active{transform:translateY(3px);border-bottom-width:5px}
+.card .ik{grid-row:span 2;font-size:48px;text-align:center}
+.card b{font-size:26px;color:var(--c);line-height:1.1}
+.card small{font-size:16px;color:var(--mute)}
+.ortu{display:flex;gap:12px;align-items:center;margin-top:22px;background:var(--paper);border:3px dashed var(--line);border-radius:16px;padding:12px 14px}
+.ortu input{width:28px;height:28px;flex:none}
+.ortu small{font-size:15px;color:var(--mute)}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-weight:700;gap:8px;flex-wrap:wrap}
+.ghost{background:none;border:2px solid var(--line);border-radius:999px;padding:6px 18px;min-height:48px;font-size:18px;color:var(--mute);background:var(--paper)}
+.bar{height:14px;background:var(--paper);border:2px solid var(--line);border-radius:99px;margin:10px 0 14px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;transition:width .3s}
+.vis{font-size:56px;text-align:center;background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:14px 8px;margin-bottom:10px;word-break:break-word;line-height:1.15}
+.opts{display:grid;gap:12px;margin:14px 0}
+.opt{background:var(--paper);border:3px solid var(--c);border-bottom-width:7px;border-radius:18px;padding:12px 16px;font-size:26px;font-weight:700;text-align:left;min-height:68px;display:flex;align-items:center;gap:12px}
+.opt:active{transform:translateY(3px)}
+.opt:disabled{cursor:default;transform:none}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.no{background:var(--nobg);border-color:var(--no)}
+.opt.dim{opacity:.55}
+.opt.ok .lt{background:var(--ok)}.opt.no .lt{background:var(--no)}
+.opt.ok::after,.opt.no::after{margin-left:auto;font-size:32px;line-height:1}
+.opt.ok::after{content:"✓";color:var(--ok)}.opt.no::after{content:"✗";color:var(--no)}
+.fb{border-radius:16px;padding:12px 16px;font-size:22px;font-weight:700;margin-bottom:10px}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.no{background:var(--nobg);color:var(--no)}
+.note{font-size:18px;font-weight:500;color:var(--ink);background:var(--paper);border:3px dashed var(--line);border-radius:14px;padding:10px 14px;margin-bottom:12px}
+.go{display:block;width:100%;background:var(--c);color:#fff;border:0;border-bottom:7px solid rgba(0,0,0,.28);border-radius:18px;padding:12px;font-size:26px;font-weight:800;margin-top:8px}
+.go.alt{background:var(--paper);color:var(--ink);border:3px solid var(--line);border-bottom-width:7px}
+.stars{font-size:64px;text-align:center;letter-spacing:6px;color:var(--star);margin:6px 0}
+.stars .off{color:var(--line)}
+.skor{text-align:center;font-size:34px;font-weight:800}
+.msg{text-align:center;color:var(--mute);margin:0 0 16px}
+.rev{background:var(--paper);border:3px solid var(--line);border-radius:16px;padding:10px 14px;margin:10px 0;font-size:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#app>*{animation:in .22s ease-out}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);background:var(--paper)}
+.dots i.ok{background:var(--ok);border-color:var(--ok)}
+.dots i.no{background:var(--no);border-color:var(--no)}
+.dots i.cur{border-color:var(--c);box-shadow:0 0 0 3px var(--star)}
+.top span.nv{display:flex;gap:8px}
+.dots i.sk{border-style:dashed;border-color:var(--star)}
+.form{display:flex;gap:10px;align-items:center;margin-top:18px;background:var(--paper);border:3px dashed var(--line);border-radius:16px;padding:10px 12px}
+.inp{flex:1;min-width:0;font:inherit;font-size:22px;padding:8px 12px;border:3px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:90px;margin:8px 0 2px}
+.bars div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font-size:16px;color:var(--mute)}
+.bars i{display:block;width:100%;border-radius:6px 6px 0 0;min-height:4px}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.bd{background:var(--paper);border:3px solid var(--star);border-radius:16px;padding:8px 10px;font-size:17px;text-align:center;line-height:1.15}
+.bd span{display:block;font-size:34px}
+.bd.off{opacity:.4;filter:grayscale(1);border-color:var(--line)}
+@media print{body{background:#fff;color:#000}.noprint{display:none!important}}
+.tm{font-weight:800;color:var(--ind)}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.seg button{font:inherit;font-size:18px;padding:6px 16px;min-height:48px;border-radius:999px;border:3px solid var(--line);background:var(--paper);color:var(--ink)}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+summary{font-weight:700;cursor:pointer}
+details div{font-size:17px;margin:4px 0}
+.lt{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--paper);font-size:22px;font-weight:800;line-height:1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .go:not(.alt){color:#0E1530}}
+:root[data-theme="dark"] .go:not(.alt){color:#0E1530}
+#fb:not(:empty){position:sticky;bottom:0;z-index:2;background:var(--bg);padding:8px 0 calc(10px + env(safe-area-inset-bottom,0px));margin-top:6px;box-shadow:0 -14px 14px -4px var(--bg)}
+body{min-height:100dvh}
+@media (min-width:720px){#app{max-width:720px;padding-top:32px}.opts{grid-template-columns:1fr 1fr}.vis{font-size:64px}h1{font-size:46px}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// Format soal: [gambar, pertanyaan, [jawaban benar, salah, salah], catatan untuk orang tua]
+var D = {
+  mtk: {n:"Matematika", i:"🔢", c:"var(--mtk)", q:[
+    ["🍎🍎🍎 + 🍎🍎","Berapa jumlah semua apel?",["5","4","6"],"3 ditambah 2 sama dengan 5. Ajak anak menghitung apel satu per satu dengan jari."],
+    ["3 + 4","Hasil dari 3 + 4 adalah ...",["7","6","8"],"Mulai dari 4, lalu tambah 3 hitungan: 5, 6, 7."],
+    ["🐟🐟🐟🐟🐟🐟","Ada 6 ikan. 2 ikan pergi. Berapa ikan yang tersisa?",["4","3","5"],"6 dikurangi 2 sama dengan 4. Coret 2 ikan, lalu hitung sisanya."],
+    ["9 − 5","Hasil dari 9 − 5 adalah ...",["4","5","3"],"Hitung mundur 5 kali dari 9: 8, 7, 6, 5, 4."],
+    ["12, ? , 14","Angka yang hilang adalah ...",["13","11","15"],"Urutan bilangan: 12, 13, 14."],
+    ["8   15   11","Angka mana yang paling besar?",["15","8","11"],"Bandingkan puluhannya dulu: hanya 15 dan 11 yang punya puluhan, lalu 15 lebih besar dari 11."],
+    ["🚲","Roda sepeda berbentuk seperti ...",["lingkaran","segitiga","persegi"],"Roda itu bundar. Bentuk bundar namanya lingkaran."],
+    ["6 + 6","Hasil dari 6 + 6 adalah ...",["12","10","11"],"Dua bilangan yang sama: 6 + 6 = 12."],
+    ["? , 20","Angka sebelum 20 adalah ...",["19","21","10"],"Sebelum berarti mundur satu angka."],
+    ["10 − 3","Hasil dari 10 − 3 adalah ...",["7","6","8"],"Hitung mundur 3 kali dari 10: 9, 8, 7."]
+  ]},
+  ind: {n:"Bahasa Indonesia", i:"📖", c:"var(--ind)", q:[
+    ["🐱","Gambar ini namanya ...",["kucing","kuda","kelinci"],"Ajak anak mengeja pelan: ku-cing."],
+    ["BUKU","Huruf pertama kata “BUKU” adalah ...",["B","U","K"],"Huruf pertama ada paling kiri."],
+    ["🏀","Kata “bola” dipisah menjadi suku kata ...",["bo-la","b-ola","bol-a"],"Tepuk tangan sesuai ketukan bunyi: bo-la, dua tepukan."],
+    ["A   B   K","Mana yang huruf vokal?",["A","B","K"],"Huruf vokal ada lima: a, i, u, e, o."],
+    ["🐔","Huruf awal kata “ayam” adalah ...",["A","Y","M"],"Ucapkan “a-yam”, bunyi pertamanya A."],
+    ["🌞","Gambar ini namanya ...",["matahari","bulan","bintang"],"Matahari bersinar pada siang hari."],
+    ["🧹","Huruf terakhir kata “sapu” adalah ...",["U","S","P"],"Eja pelan: s-a-p-u. Huruf terakhir ada paling kanan."],
+    ["👩‍🍳","Kalimat yang benar adalah ...",["Ibu memasak di dapur.","Dapur di memasak ibu.","Memasak dapur ibu di."],"Kalimat dimulai dari siapa, lalu melakukan apa, lalu di mana."],
+    ["Aku suka makan nasi_","Tanda baca di akhir kalimat itu adalah ...",[".","?","!"],"Kalimat biasa diakhiri tanda titik."],
+    ["🐘 ↔ 🐭","Lawan kata “besar” adalah ...",["kecil","tinggi","panjang"],"Gajah besar, tikus kecil."]
+  ]},
+  pan: {n:"Pendidikan Pancasila", i:"🦅", c:"var(--pan)", q:[
+    ["⭐","Lambang sila pertama adalah ...",["bintang","rantai","pohon beringin"],"Sila 1: Ketuhanan Yang Maha Esa."],
+    ["⛓️","Lambang sila kedua adalah ...",["rantai","bintang","kepala banteng"],"Sila 2: Kemanusiaan yang adil dan beradab."],
+    ["🌳","Lambang sila ketiga adalah ...",["pohon beringin","padi dan kapas","rantai"],"Sila 3: Persatuan Indonesia."],
+    ["🐂","Lambang sila keempat adalah ...",["kepala banteng","bintang","pohon beringin"],"Sila 4: mengambil keputusan bersama dengan musyawarah."],
+    ["🌾","Lambang sila kelima adalah ...",["padi dan kapas","rantai","bintang"],"Sila 5: Keadilan sosial bagi seluruh rakyat Indonesia."],
+    ["🦅","Lambang negara kita adalah ...",["Garuda Pancasila","singa","harimau"],"Burung Garuda membawa lima lambang sila di dadanya."],
+    ["🍚🙏","Sebelum makan kita sebaiknya ...",["berdoa","berlari","tidur"],"Berdoa adalah sikap yang sesuai sila pertama."],
+    ["🤕","Temanmu jatuh. Kamu ...",["menolong","menertawakan","pergi"],"Menolong teman sesuai sila kedua."],
+    ["🤝","Temanmu berbeda suku. Kamu ...",["berteman baik","menjauhi","mengejek"],"Persatuan: kita berbeda-beda tetapi tetap satu."],
+    ["🍰🍰","Kakak dan adik punya 2 kue. Agar adil, kue ...",["dibagi sama rata","diambil kakak semua","diambil adik semua"],"Adil artinya sama-sama mendapat bagian, sesuai sila kelima."]
+  ]}
+};
+// Bab dan soal tambahan. Semua soal pilihan ganda: P(bab, gambar, pertanyaan, [benar, pengecoh, pengecoh, pengecoh], catatan)
+function P(b,v,t,o,e){return {b:b,v:v,t:t,o:o,e:e}}
+D.mtk.bab=["Penjumlahan","Pengurangan","Bilangan dan bentuk"];D.mtk.m=[0,0,1,1,2,2,2,0,2,1];
+D.ind.bab=["Huruf dan suku kata","Mengenal kata","Menulis kalimat"];D.ind.m=[1,0,0,0,0,1,0,2,2,1];
+D.pan.bab=["Lambang Pancasila","Sikap sesuai sila"];D.pan.m=[0,0,0,0,0,0,1,1,1,1];
+D.mtk.x=[
+ P(0,"5 + 3","Hasil dari 5 + 3 adalah ...",["8","7","9","6"],"Mulai dari 5, tambah 3 hitungan: 6, 7, 8."),
+ P(0,"🍌🍌🍌🍌 + 🍌🍌🍌","Ada berapa pisang semuanya?",["7","6","8","5"],"4 ditambah 3 sama dengan 7. Hitung pisangnya bersama."),
+ P(1,"7 − 2","Hasil dari 7 − 2 adalah ...",["5","4","6","3"],"Hitung mundur 2 dari 7: 6, 5."),
+ P(1,"8 − 3","Mana yang benar?",["8 − 3 = 5","8 − 3 = 4","8 − 3 = 6","8 − 3 = 3"],"8 − 3 = 5. Coret 3 benda dari 8, sisanya 5."),
+ P(2,"🔺","Gambar ini berbentuk ...",["segitiga","lingkaran","persegi","bintang"],"Segitiga punya tiga sisi dan tiga sudut."),
+ P(2,"5   9","Angka mana yang lebih kecil?",["5","9","6","10"],"5 lebih kecil dari 9. Bandingkan dengan menghitung dari 1."),
+ P(2,"9 , ?","Angka sesudah 9 adalah ...",["10","8","11","19"],"Setelah 9 adalah 10."),
+ P(0,"2 + 7","Hasil dari 2 + 7 adalah ...",["9","8","10","7"],"Mulai dari 7, tambah 2: 8, 9."),
+ P(0,"4 + 4","Mana yang benar?",["4 + 4 = 8","4 + 4 = 7","4 + 4 = 6","4 + 4 = 9"],"4 ditambah 4 sama dengan 8."),
+ P(1,"🍪🍪🍪🍪🍪🍪🍪🍪","Ada 8 kue, dimakan 3. Sisa berapa kue?",["5","4","6","11"],"8 dikurangi 3 sama dengan 5. Coret 3 kue, lalu hitung sisanya."),
+ P(1,"10 − 6","Hasil dari 10 − 6 adalah ...",["4","3","5","16"],"Ingat 4 + 6 = 10, jadi 10 − 6 = 4."),
+ P(2,"⭐⭐⭐⭐⭐","Ada berapa bintang?",["5","4","6","3"],"Hitung gambar satu per satu dengan jari."),
+ P(2,"11, 12, ?","Angka berikutnya adalah ...",["13","14","10","15"],"Setelah 12 adalah 13.")
+,
+ P(0,"1 + 8","Hasil dari 1 + 8 adalah ...",["9","8","10","7"],"Mulai dari 8, tambah 1: 9."),
+ P(0,"🐥🐥🐥 + 🐥🐥🐥🐥","Ada berapa anak ayam semuanya?",["7","6","8","12"],"3 ditambah 4 sama dengan 7. Hitung bersama."),
+ P(0,"5 + 5","Hasil dari 5 + 5 adalah ...",["10","9","11","55"],"Lima ditambah lima sama dengan sepuluh, seperti dua tangan."),
+ P(0,"6 + 3","Hasil dari 6 + 3 adalah ...",["9","8","10","3"],"Mulai dari 6, tambah 3: 7, 8, 9."),
+ P(0,"🎈🎈🎈🎈🎈","Adi punya 5 balon. Ibu memberi 4 balon lagi. Berapa balon Adi sekarang?",["9","8","10","1"],"5 ditambah 4 sama dengan 9."),
+ P(1,"6 − 1","Hasil dari 6 − 1 adalah ...",["5","4","7","6"],"Hitung mundur 1 dari 6: 5."),
+ P(1,"🍊🍊🍊🍊🍊🍊🍊","Ada 7 jeruk. 4 jeruk dimakan. Berapa jeruk tersisa?",["3","4","2","11"],"7 dikurangi 4 sama dengan 3. Coret 4 jeruk."),
+ P(1,"9 − 9","Hasil dari 9 − 9 adalah ...",["0","9","1","18"],"Jika semua diambil, tidak ada yang tersisa: nol."),
+ P(1,"10 − 5","Hasil dari 10 − 5 adalah ...",["5","4","6","15"],"Ingat 5 + 5 = 10."),
+ P(1,"🐦🐦🐦🐦🐦","Ada 5 burung. 3 burung terbang. Berapa burung masih di sini?",["2","3","1","8"],"5 dikurangi 3 sama dengan 2."),
+ P(2,"🟦","Gambar ini berbentuk ...",["persegi","lingkaran","segitiga","bintang"],"Persegi punya empat sisi sama panjang."),
+ P(2,"14   9   20","Angka mana yang paling kecil?",["9","14","20","10"],"9 hanya punya satuan, jadi paling kecil."),
+ P(2,"15, 16, ?","Angka berikutnya adalah ...",["17","18","14","15"],"Setelah 16 adalah 17.")
+,
+ P(0,"3 + 3","Hasil dari 3 + 3 adalah ...",["6","5","7","33"],"Dua bilangan yang sama: 3 + 3 = 6."),
+ P(0,"8 + 2","Hasil dari 8 + 2 adalah ...",["10","9","11","6"],"8 ditambah 2 sama dengan 10."),
+ P(0,"🍇🍇🍇🍇🍇 + 🍇🍇","Ada berapa anggur semuanya?",["7","6","8","3"],"5 ditambah 2 sama dengan 7."),
+ P(0,"4 + 5","Hasil dari 4 + 5 adalah ...",["9","8","10","1"],"Mulai dari 5, tambah 4: 6, 7, 8, 9."),
+ P(0,"🚗🚗🚗","Ada 3 mobil di parkiran. Datang 5 mobil lagi. Berapa mobil sekarang?",["8","7","9","2"],"3 ditambah 5 sama dengan 8."),
+ P(1,"8 − 4","Hasil dari 8 − 4 adalah ...",["4","3","5","12"],"Hitung mundur 4 dari 8: 7, 6, 5, 4."),
+ P(1,"7 − 7","Hasil dari 7 − 7 adalah ...",["0","7","1","14"],"Jika semua diambil, tersisa nol."),
+ P(1,"🍩🍩🍩🍩🍩🍩","Ada 6 donat. Adik makan 2 donat. Berapa donat tersisa?",["4","3","5","8"],"6 dikurangi 2 sama dengan 4."),
+ P(1,"9 − 6","Hasil dari 9 − 6 adalah ...",["3","2","4","15"],"Ingat 3 + 6 = 9, jadi 9 − 6 = 3."),
+ P(1,"10 − 8","Hasil dari 10 − 8 adalah ...",["2","1","3","18"],"Ingat 2 + 8 = 10."),
+ P(2,"⚪","Gambar ini berbentuk ...",["lingkaran","persegi","segitiga","bintang"],"Lingkaran bundar dan tidak punya sudut."),
+ P(2,"17   12   19","Angka mana yang paling besar?",["19","17","12","11"],"Bandingkan satuannya: 9 lebih besar dari 7 dan 2."),
+ P(2,"? , 16","Angka sebelum 16 adalah ...",["15","17","6","14"],"Sebelum berarti mundur satu angka."),
+ P(2,"18, 19, ?","Angka berikutnya adalah ...",["20","21","17","10"],"Setelah 19 adalah 20."),
+ P(2,"🍕","Potongan pizza ini bentuknya mirip ...",["segitiga","lingkaran","persegi","bintang"],"Potongan pizza punya tiga sisi, mirip segitiga.")
+];
+D.ind.x=[
+ P(0,"🏠","Kata “rumah” dipisah menjadi suku kata ...",["ru-mah","mah-ru","rum-ah","r-umah"],"Ucapkan pelan: ru-mah."),
+ P(0,"🐟","Huruf pertama nama gambar ini adalah ...",["I","K","A","N"],"Gambar ikan. Ucapkan “i-kan”, bunyi pertamanya I."),
+ P(0,"ba-ju","Ada berapa suku kata pada kata “baju”?",["2","1","3","4"],"Tepuk tangan: ba, ju. Ada dua tepukan."),
+ P(1,"👩","Gambar ini namanya ...",["ibu","ayah","kakek","paman"],"Eja: i-b-u."),
+ P(1,"🐶","Gambar ini namanya ...",["anjing","kucing","ikan","kambing"],"Minta anak menyebut nama gambar sebelum memilih."),
+ P(1,"🌙","Gambar ini namanya ...",["bulan","matahari","bintang","awan"],"Bulan tampak pada malam hari."),
+ P(2,"","Kalimat mana yang ditulis dengan benar?",["Ibu pergi ke pasar.","ibu pergi ke pasar","Ibu pergi ke pasar","ibu pergi ke pasar."],"Diawali huruf besar dan diakhiri titik."),
+ P(2,"ibu pergi ke pasar","Agar benar, kalimat ini perlu ...",["huruf besar di awal dan titik di akhir","huruf besar di akhir kalimat","tanda tanya di awal kalimat","tidak perlu diubah"],"Awal kalimat harus huruf besar dan akhirnya titik."),
+ P(2,"","Kalimat yang benar adalah ...",["Aku makan nasi.","Makan aku nasi.","Nasi makan aku.","Aku nasi makan."],"Kalimat dimulai dari siapa, lalu melakukan apa."),
+ P(2,"🔥","Lawan kata “panas” adalah ...",["dingin","hangat","basah","tinggi"],"Tanyakan: kalau panas lawannya apa?"),
+ P(0,"🐮","Kata “sapi” dipisah menjadi suku kata ...",["sa-pi","pi-sa","sap-i","s-api"],"Eja: sa-pi. Tepuk tangan dua kali."),
+ P(1,"🐰","Gambar ini namanya ...",["kelinci","kucing","kambing","kuda"],"Ucapkan pelan: ke-lin-ci."),
+ P(1,"🐘","Gambar ini namanya ...",["gajah","jerapah","badak","singa"],"Eja: g-a-j-a-h.")
+,
+ P(0,"🥭","Huruf pertama kata “mangga” adalah ...",["M","N","G","A"],"Ucapkan “ma-ngga”, bunyi pertamanya M."),
+ P(0,"E   B   C","Mana yang huruf vokal?",["E","B","C","D"],"Huruf vokal: a, i, u, e, o."),
+ P(0,"🍌","Kata “pisang” dipisah menjadi suku kata ...",["pi-sang","pis-ang","p-isang","pisa-ng"],"Tepuk tangan: pi, sang."),
+ P(1,"🐟","Kata “ikan” terdiri dari ... huruf.",["4","3","5","2"],"Eja: i-k-a-n. Ada empat huruf."),
+ P(1,"🐴","Gambar ini namanya ...",["kuda","sapi","kambing","kerbau"],"Ucapkan pelan: ku-da."),
+ P(1,"🍎","Gambar ini namanya ...",["apel","jeruk","pisang","mangga"],"Apel berwarna merah."),
+ P(1,"🚗","Gambar ini namanya ...",["mobil","motor","sepeda","bus"],"Ucapkan pelan: mo-bil."),
+ P(2,"","Kalimat yang benar adalah ...",["Adik minum susu.","Susu minum adik.","Minum susu adik.","Adik susu minum."],"Kalimat dimulai dari siapa, lalu melakukan apa."),
+ P(2,"Ayah membaca koran_","Tanda baca di akhir kalimat itu adalah ...",[".","?","!",","],"Kalimat biasa diakhiri tanda titik."),
+ P(2,"Kamu sedang apa_","Tanda baca di akhir kalimat itu adalah ...",["?",".","!",","],"Kalimat bertanya diakhiri tanda tanya."),
+ P(2,"☀️ ↔ 🌙","Lawan kata “siang” adalah ...",["malam","pagi","sore","bulan"],"Siang terang, malam gelap."),
+ P(2,"","Awal kalimat ditulis dengan huruf ...",["besar","kecil","miring","tebal"],"Awal kalimat selalu huruf besar."),
+ P(2,"","Mana kalimat yang ditulis dengan benar?",["Kakak membaca buku.","kakak membaca buku","Kakak membaca buku","kakak membaca buku."],"Diawali huruf besar dan diakhiri titik.")
+,
+ P(0,"🍉","Kata “semangka” dipisah menjadi suku kata ...",["se-mang-ka","sem-ang-ka","s-emangka","semang-ka"],"Tepuk tangan tiga kali: se, mang, ka."),
+ P(0,"🦆","Huruf pertama kata “bebek” adalah ...",["B","E","K","D"],"Ucapkan “be-bek”, bunyi pertamanya B."),
+ P(0,"U   M   R","Mana yang huruf vokal?",["U","M","R","N"],"Huruf vokal: a, i, u, e, o."),
+ P(0,"🍚","Huruf terakhir kata “nasi” adalah ...",["I","N","A","S"],"Eja: n-a-s-i. Huruf terakhir ada paling kanan."),
+ P(0,"🌙","Kata “bulan” dipisah menjadi suku kata ...",["bu-lan","bul-an","b-ulan","bula-n"],"Tepuk tangan: bu, lan."),
+ P(1,"🚲","Gambar ini namanya ...",["sepeda","mobil","motor","becak"],"Ucapkan pelan: se-pe-da."),
+ P(1,"🐭 ↔ 🐘","Lawan kata “kecil” adalah ...",["besar","pendek","sempit","kurus"],"Tikus kecil, gajah besar."),
+ P(1,"📚","Gambar ini namanya ...",["buku","tas","pensil","meja"],"Ucapkan pelan: bu-ku."),
+ P(1,"🏫","Gambar ini namanya ...",["sekolah","rumah","pasar","masjid"],"Sekolah adalah tempat kita belajar."),
+ P(1,"🥛","Gambar ini namanya ...",["susu","teh","kopi","jus"],"Susu berwarna putih."),
+ P(2,"","Kalimat yang benar adalah ...",["Ani membaca buku.","Buku Ani membaca.","Membaca buku Ani.","Ani buku membaca."],"Kalimat dimulai dari siapa, lalu melakukan apa."),
+ P(2,"Adik tidur di kamar_","Tanda baca di akhir kalimat itu adalah ...",[".","?","!",","],"Kalimat biasa diakhiri tanda titik."),
+ P(2,"Siapa namamu_","Tanda baca di akhir kalimat itu adalah ...",["?",".","!",","],"Kalimat bertanya diakhiri tanda tanya."),
+ P(2,"🔥 ↔ ❄️","Lawan kata “dingin” adalah ...",["panas","sejuk","basah","beku"],"Es dingin, api panas."),
+ P(2,"","Mana kalimat yang ditulis dengan benar?",["Aku bermain bola.","aku bermain bola","Aku bermain bola","aku bermain bola."],"Diawali huruf besar dan diakhiri titik.")
+];
+D.pan.x=[
+ P(0,"🦅","Pancasila memiliki berapa sila?",["5","4","3","6"],"Ada lima sila. Ajak anak menyebutnya sambil menghitung jari."),
+ P(0,"⭐","Bintang adalah lambang sila ke ...",["1","2","3","4"],"Ingat: bintang, rantai, pohon beringin."),
+ P(0,"🌳","Pohon beringin adalah lambang sila ke ...",["3","2","1","5"],"Pohon beringin adalah lambang sila ketiga."),
+ P(1,"🙏","Berdoa sesuai dengan sila ke ...",["1","2","3","5"],"Berdoa sesuai sila pertama. Diskusikan mengapa sikap ini cocok."),
+ P(1,"🤥","Berbohong itu perbuatan ...",["tidak baik","baik","hebat","lucu"],"Kita harus jujur."),
+ P(1,"🧒👧","Kita boleh berteman dengan ...",["siapa saja","teman satu suku saja","anak laki-laki saja","anak yang pintar saja"],"Persatuan: semua teman, walau berbeda."),
+ P(0,"🇮🇩","Dasar negara Indonesia adalah ...",["Pancasila","Merah Putih","Indonesia Raya","Bhinneka Tunggal Ika"],"Pancasila adalah dasar negara kita."),
+ P(0,"⭐","Sila pertama berbunyi ...",["Ketuhanan Yang Maha Esa","Kemanusiaan yang adil dan beradab","Persatuan Indonesia","Keadilan sosial bagi seluruh rakyat Indonesia"],"Sila 1: Ketuhanan Yang Maha Esa."),
+ P(1,"🗑️","Sampah sebaiknya dibuang ...",["di tempat sampah","di jalan","di sungai","di laci meja"],"Menjaga kebersihan adalah sikap baik."),
+ P(1,"🤲","Kita ingin meminjam mainan teman. Kita harus ...",["minta izin dulu","mengambil diam-diam","merebutnya","menyembunyikannya"],"Kita harus meminta izin dan jujur."),
+ P(1,"🍬🍬🍬🍬","Empat permen dibagi sama rata untuk 2 anak. Tiap anak dapat berapa?",["2","1","3","4"],"4 dibagi dua sama rata: tiap anak 2. Sesuai sila kelima.")
+,
+ P(0,"🌾","Padi dan kapas adalah lambang sila ke ...",["5","4","3","1"],"Padi dan kapas lambang sila kelima."),
+ P(1,"🤒","Temanmu sakit. Kita sebaiknya ...",["menjenguknya","mengejeknya","menjauhinya","tidak peduli"],"Peduli pada teman sesuai sila kedua."),
+ P(1,"🗣️🤝","Saat berbeda pendapat dengan teman, kita ...",["berbicara baik-baik","bertengkar","pergi marah-marah","memukul teman"],"Bermusyawarah sesuai sila keempat.")
+,
+ P(0,"🐂","Kepala banteng adalah lambang sila ke ...",["4","1","2","3"],"Kepala banteng lambang sila keempat."),
+ P(0,"⛓️","Rantai adalah lambang sila ke ...",["2","1","3","5"],"Rantai lambang sila kedua."),
+ P(0,"🦅","Di dada Garuda ada ... lambang sila.",["5","3","4","10"],"Ada lima lambang sila di dada Garuda."),
+ P(0,"🇮🇩","Bendera negara kita bernama ...",["Merah Putih","Biru Putih","Merah Kuning","Hijau Putih"],"Bendera kita berwarna merah dan putih."),
+ P(0,"🌳","Sila ketiga berbunyi ...",["Persatuan Indonesia","Ketuhanan Yang Maha Esa","Kemanusiaan yang adil dan beradab","Keadilan sosial bagi seluruh rakyat Indonesia"],"Sila 3: Persatuan Indonesia."),
+ P(1,"👵","Bertemu nenek, kita sebaiknya ...",["menyapa dengan sopan","berteriak","mengejek","pergi saja"],"Bersikap sopan pada orang yang lebih tua."),
+ P(1,"🧹","Kelas kotor. Kita sebaiknya ...",["membersihkannya bersama","membiarkannya","mengotorinya","pulang"],"Gotong royong sesuai sila ketiga."),
+ P(1,"🙏","Sebelum tidur kita sebaiknya ...",["berdoa","berlari","bermain","berteriak"],"Berdoa sesuai sila pertama."),
+ P(1,"🧸","Temanmu tidak punya mainan. Kamu ...",["mau berbagi","tidak peduli","menyembunyikan mainanmu","mengejeknya"],"Berbagi sesuai sila kelima."),
+ P(1,"🗳️","Memilih ketua kelas sebaiknya dengan ...",["bermusyawarah","berkelahi","memaksa","berebut"],"Mengambil keputusan bersama sesuai sila keempat.")
+];
+// Pengecoh ke-4 untuk soal pilihan ganda lama, agar semua soal punya opsi a-d
+var EX={
+ mtk:["7","5","2","6","12","9","persegi panjang","13","18","9"],
+ ind:["kambing","A","bo-l-a","M","I","awan","A","Ibu dapur di memasak.",",","lebar"],
+ pan:["kepala banteng","padi dan kapas","bintang","rantai","kepala banteng","banteng","bermain","diam saja","memarahi","dibuang"]
+};
+Object.keys(EX).forEach(function(k){EX[k].forEach(function(x,i){D[k].q[i][2].push(x)})});
+D.mtk.q[5][0]="8   15   11   9";
+function pil(q){return q.o.map(function(o,i){return "abcd".charAt(i)+": "+o}).join(". ")}
+var $ = document.getElementById("app");
+var S = {ortu:false,k:null,i:0,skor:0,qs:[],salah:[],pilih:null,ulang:false};
+var DB = {aktif:"",p:{}};
+try{var x0=JSON.parse(localStorage.getItem("ulangan_db"));if(x0&&x0.p)DB=x0}catch(e){}
+DB.cfg=Object.assign({n:10,dur:0,rate:.85,auto:false,ortu:false,pin:""},DB.cfg||{});
+Object.defineProperty(S,"ortu",{get:function(){return DB.cfg.ortu},set:function(v){DB.cfg.ortu=v;simpanDB()}});
+function simpanDB(){try{localStorage.setItem("ulangan_db",JSON.stringify(DB))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function prof(){return DB.p[DB.aktif]}
+function sh(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function bintang(s){return s>=8?3:s>=5?2:1}
+function bintangHtml(n){return "★".repeat(n)+'<span class="off">'+"★".repeat(3-n)+"</span>"}
+function baca(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="id-ID";u.rate=DB.cfg.rate;speechSynthesis.speak(u)}catch(e){}}
+function sk(r){return Math.round(r.s/r.n*10)}
+function hist(k){return prof().h.filter(function(r){return r.k===k})}
+function best(k){return hist(k).reduce(function(m,r){return Math.max(m,sk(r))},0)}
+function rata(k){var h=hist(k);return h.length?h.reduce(function(a,r){return a+sk(r)},0)/h.length:0}
+function nUlang(){var w=prof().w,c=0;for(var id in w)if(w[id]>0)c++;return c}
+function lencana(){var h=prof().h,ks={};h.forEach(function(r){if(r.k!=="ulang")ks[r.k]=1});
+  return [
+    {i:"🌱",n:"Latihan pertama",ok:h.length>=1},
+    {i:"⭐",n:"Nilai sempurna",ok:h.some(function(r){return r.n>=5&&r.s===r.n})},
+    {i:"🔥",n:"Rajin: 5 latihan",ok:h.length>=5},
+    {i:"🎓",n:"Coba 3 pelajaran",ok:Object.keys(ks).length>=3},
+    {i:"💪",n:"Ulang soal sulit",ok:h.some(function(r){return r.k==="ulang"})}
+  ]}
+
+function anak(){
+  var ns=Object.keys(DB.p);
+  $.innerHTML='<h1>Latihan Ulangan<span>Kelas 1 SD</span></h1><p class="sub">'+(ns.length?"Siapa yang akan berlatih?":"Siapa nama adik? Nilai dan bintang disimpan atas namanya.")+'</p><div class="grid">'+
+    ns.map(function(n){return '<button class="card" style="--c:var(--mtk)" data-n="'+esc(n)+'"><span class="ik">🧒</span><b>'+esc(n)+'</b><small>'+DB.p[n].h.length+' kali latihan</small></button>'}).join("")+
+    '</div><div class="form"><input class="inp" id="nama" maxlength="20" placeholder="Nama anak" aria-label="Nama anak"><button class="ghost" id="tbh">Tambah</button></div>';
+  $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){DB.aktif=b.dataset.n;simpanDB();home()}});
+  function tambah(){var n=document.getElementById("nama").value.trim().slice(0,20);if(!n)return;if(!DB.p[n])DB.p[n]={h:[],w:{}};DB.aktif=n;simpanDB();home()}
+  document.getElementById("tbh").onclick=tambah;
+  document.getElementById("nama").onkeydown=function(e){if(e.key==="Enter")tambah()};
+}
+
+function home(){
+  try{speechSynthesis.cancel()}catch(e){}
+  if(!prof())return anak();
+  var u=nUlang();
+  $.innerHTML='<h1>Halo, '+esc(DB.aktif)+'!<span>Latihan Ulangan Kelas 1</span></h1><p class="sub">Pilih pelajaran, ya!</p><div class="grid">'+
+    Object.keys(D).map(function(k){var b=best(k);
+      return '<button class="card" style="--c:'+D[k].c+'" data-k="'+k+'"><span class="ik">'+D[k].i+'</span><b>'+D[k].n+'</b><small>'+(b?'Nilai terbaik '+b+' dari 10':buat(k).length+' soal, belum dicoba')+'</small></button>'}).join("")+'</div>'+
+    (u?'<button class="go" id="ul" style="--c:var(--ind)">💪 Latihan ulang soal sulit ('+u+')</button>':'')+
+    '<button class="go alt" id="pg">📈 Lihat progres</button>'+
+    
+    '<button class="ghost" id="gt" style="margin-top:14px">Ganti anak</button> <button class="ghost" id="od" style="margin-top:14px">🔒 Pendamping</button>';
+  $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){bab(b.dataset.k)}});
+  if(u)document.getElementById("ul").onclick=mulaiUlang;
+  document.getElementById("pg").onclick=progres;
+  document.getElementById("gt").onclick=anak;
+  document.getElementById("od").onclick=bukaOrtu;
+  var oc=document.getElementById("ortu");if(oc)oc.onchange=function(e){S.ortu=e.target.checked};
+}
+
+function buat(k){var d=D[k],out=[];
+  d.q.forEach(function(x,i){out.push({k:k,id:k+":"+i,bab:d.m[i],y:"pg",v:x[0],t:x[1],b:x[2][0],o:sh(x[2]),e:x[3]})});
+  d.x.forEach(function(x,j){out.push({k:k,id:k+":x"+j,bab:x.b,y:"pg",v:x.v,t:x.t,b:x.o[0],o:sh(x.o),e:x.e})});
+  return out}
+function reset(){S.i=0;S.skor=0;S.salah=[];S.hs=[];S.skp={};S.pilih=null;S.done=0;S.timeout=0;mulaiTimer()}
+function mulai(k,b){
+  S.k=k;S.ulang=false;S.bab=b;var all=sh(buat(k));
+  S.qs=(b>=0?all.filter(function(q){return q.bab===b}):all).slice(0,N());reset();tanya();
+}
+function mulaiUlang(){
+  var w=prof().w,all=[];Object.keys(D).forEach(function(k){all=all.concat(buat(k))});
+  all=all.filter(function(q){return w[q.id]>0}).sort(function(a,b){return w[b.id]-w[a.id]});
+  if(!all.length)return;
+  S.k="ulang";S.ulang=true;S.bab=-1;S.qs=sh(all.slice(0,N()));reset();tanya();
+}
+function bab(k){
+  S.k=k;var d=D[k],all=buat(k);
+  $.innerHTML='<div style="--c:'+d.c+'"><div class="top"><button class="ghost" id="x">Menu</button></div><h1>'+d.i+' '+d.n+'<span>Pilih bab latihan</span></h1><div class="grid">'+
+    d.bab.map(function(n,i){var c=all.filter(function(q){return q.bab===i}).length;
+      return '<button class="card" style="--c:'+d.c+'" data-b="'+i+'"><span class="ik">'+(i+1)+'</span><b>'+n+'</b><small>'+c+' soal</small></button>'}).join("")+
+    '<button class="card" style="--c:var(--star)" data-b="-1"><span class="ik">🎲</span><b>Campuran</b><small>'+(DB.cfg.n>0?DB.cfg.n:"semua")+' soal acak dari semua bab</small></button></div></div>';
+  document.getElementById("x").onclick=home;
+  $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){mulai(k,+b.dataset.b)}});
+}
+function tanya(){
+  var q=S.qs[S.i],n=S.qs.length,c=D[q.k].c;S.done=0;
+  $.innerHTML='<div style="--c:'+c+'"><div class="top"><span class="nv"><button class="ghost" id="x">🏠 Menu</button>'+(S.ulang?"":'<button class="ghost" id="bb">📚 Bab</button>')+'</span><span>'+(S.ulang?"Latihan ulang: ":"")+'Soal '+(S.i+1)+' dari '+n+(S.skp[q.id]?' · dilewati tadi':'')+'</span>'+(S.sisa>0?'<span id="tm" class="tm">⏱ '+fmt(S.sisa)+'</span>':'')+'</div><div id="kl" aria-live="polite"></div>'+
+    (n<=20?'<div class="dots" aria-hidden="true">'+S.qs.map(function(z,i){return '<i class="'+(S.hs[i]===1?"ok":S.hs[i]===0?"no":"")+(i===S.i?" cur":"")+(S.hs[i]===undefined&&S.skp[z.id]?" sk":"")+'"></i>'}).join("")+'</div>':'<div class="bar"><i style="width:'+(S.i/n*100)+'%;background:'+c+'"></i></div>')+
+    (q.v?'<div class="vis" aria-hidden="true">'+q.v+'</div>':'')+'<h2>'+q.t+'</h2>'+
+    '<button class="ghost" id="say">🔊 Bacakan soal</button>'+(S.i<n-1?' <button class="ghost" id="lw">⏭ Lewati dulu</button>':'')+'<div id="area"></div><div id="fb" aria-live="polite"></div></div>';
+  function pergi(fn){
+    if(S.i===0&&!S.done){fn();return}
+    var k=document.getElementById("kl");
+    k.innerHTML='<div class="fb no">Keluar dari latihan? Hasil belum disimpan.<br><button class="ghost" id="ky">Keluar</button> <button class="ghost" id="kn">Lanjut latihan</button></div>';
+    document.getElementById("ky").onclick=fn;document.getElementById("kn").onclick=function(){k.innerHTML=""};
+  }
+  document.getElementById("x").onclick=function(){pergi(home)};
+  var bb=document.getElementById("bb");if(bb)bb.onclick=function(){pergi(function(){bab(S.k)})};
+  var lw=document.getElementById("lw");
+  if(lw)lw.onclick=function(){if(S.done)return;try{speechSynthesis.cancel()}catch(e){}S.skp[q.id]=1;S.qs.push(S.qs.splice(S.i,1)[0]);tanya()};
+  document.getElementById("say").onclick=function(){baca(q.t+(q.o?". Pilihannya: "+pil(q):""))};
+  var area=document.getElementById("area");
+  if(DB.cfg.auto)baca(q.t+(q.o?". Pilihannya: "+pil(q):""));
+  if(q.o){
+    area.innerHTML='<div class="opts">'+q.o.map(function(o,i){return '<button class="opt" data-i="'+i+'"><span class="lt">'+"abcd".charAt(i)+'</span><span>'+o+'</span></button>'}).join("")+'</div>';
+    area.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
+      if(S.done)return;S.done=1;var i=+b.dataset.i;
+      area.querySelectorAll(".opt").forEach(function(x,j){x.disabled=true;
+        if(q.o[j]===q.b)x.classList.add("ok");else if(j===i)x.classList.add("no");else x.classList.add("dim")});
+      nilai(q.o[i]===q.b)}});
+
+  }
+}
+function nilai(ok){
+  var q=S.qs[S.i],w=prof().w;S.hs[S.i]=ok?1:0;
+  var lw=document.getElementById("lw");if(lw)lw.style.display="none";
+  var dt=document.querySelectorAll(".dots i")[S.i];if(dt)dt.className=(ok?"ok":"no")+" cur";
+  if(ok){S.skor++;if(w[q.id]>0)w[q.id]--}else{S.salah.push(q);w[q.id]=(w[q.id]||0)+1}
+  simpanDB();
+  var last=S.i===S.qs.length-1;
+  document.getElementById("fb").innerHTML=
+    '<div class="fb '+(ok?"ok":"no")+'">'+(ok?"🎉 Hebat! Jawabanmu benar.":"💪 Hampir! Jawaban yang benar: "+(q.o?"abcd".charAt(q.o.indexOf(q.b))+". ":"")+q.b)+'</div>'+
+    (S.ortu?'<div class="note">👨‍👩‍👧 Catatan pendamping: '+q.e+'</div>':"")+
+    '<button class="go" id="next">'+(last?"Lihat hasil":"Lanjut")+'</button>';
+  var nx=document.getElementById("next");nx.focus();
+  nx.onclick=function(){if(last)hasil();else{S.i++;tanya()}};
+}
+
+function fmt(s){return Math.floor(s/60)+":"+("0"+s%60).slice(-2)}
+function N(){return DB.cfg.n>0?DB.cfg.n:99}
+function mulaiTimer(){
+  clearInterval(S.iv);S.sisa=DB.cfg.dur*60;if(!S.sisa)return;
+  S.iv=setInterval(function(){var el=document.getElementById("tm");if(!el){clearInterval(S.iv);return}
+    S.sisa--;el.textContent="⏱ "+fmt(Math.max(S.sisa,0));if(S.sisa<=0){clearInterval(S.iv);habis()}},1000);
+}
+function habis(){S.qs=S.qs.slice(0,S.i+(S.done?1:0));if(!S.qs.length){home();return}S.timeout=1;hasil()}
+function seg(l,key,opts){return '<b>'+l+'</b><div class="seg">'+opts.map(function(o){return '<button data-k="'+key+'" data-v="'+o[0]+'" class="'+(DB.cfg[key]===o[0]?"on":"")+'">'+o[1]+'</button>'}).join("")+'</div>'}
+function bukaOrtu(){DB.cfg.pin?pinScreen():ortuScreen()}
+function pinScreen(){
+  $.innerHTML='<h1>Layar pendamping<span>Masukkan PIN</span></h1><div class="form"><input class="inp" id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="PIN"><button class="ghost" id="ok">Buka</button></div><p class="msg" id="pm"></p><button class="go alt" id="back">Kembali</button>';
+  var pin=document.getElementById("pin");
+  function cek(){if(pin.value===DB.cfg.pin)ortuScreen();else{pin.value="";document.getElementById("pm").textContent="PIN salah. Lupa PIN? Lihat README."}}
+  document.getElementById("ok").onclick=cek;pin.onkeydown=function(e){if(e.key==="Enter")cek()};
+  document.getElementById("back").onclick=home;
+}
+function ortuScreen(){
+  var y=window.scrollY,w=prof().w,all=[];Object.keys(D).forEach(function(k){all=all.concat(buat(k))});
+  var lemah=all.filter(function(q){return w[q.id]>0}).sort(function(a,b){return w[b.id]-w[a.id]}).slice(0,5);
+  var s=function(q){return (q.v?q.v+" ":"")+q.t};
+  $.innerHTML='<h1>Pendamping<span>'+esc(DB.aktif)+'</span></h1><h2>Pengaturan latihan</h2>'+
+    seg("Jumlah soal","n",[[5,"5"],[10,"10"],[0,"Semua"]])+seg("Batas waktu","dur",[[0,"Tanpa"],[5,"5 menit"],[10,"10 menit"]])+
+    seg("Kecepatan suara","rate",[[.7,"Sangat pelan"],[.85,"Pelan"],[1,"Normal"]])+seg("Baca soal otomatis","auto",[[false,"Mati"],[true,"Hidup"]])+seg("Catatan pendamping saat latihan","ortu",[[false,"Mati"],[true,"Hidup"]])+
+    '<h2>Perlu didampingi</h2>'+(lemah.length?lemah.map(function(q){return '<div class="rev"><b>'+s(q)+'</b> <small>('+D[q.k].n+', salah '+w[q.id]+'x)</small><br>Jawaban: '+q.b+'<br>'+q.e+'</div>'}).join(""):'<p class="msg">Belum ada soal yang sering salah.</p>')+
+    '<h2>Kunci jawaban</h2>'+Object.keys(D).map(function(k){return '<details class="rev"><summary>'+D[k].i+' '+D[k].n+'</summary>'+D[k].bab.map(function(n,i){return '<p><b>'+n+'</b></p>'+all.filter(function(q){return q.k===k&&q.bab===i}).map(function(q){return '<div>• '+s(q)+' <b>'+q.b+'</b></div>'}).join("")}).join("")+'</details>'}).join("")+
+    (DB.cfg.pin?'<h2>PIN pendamping</h2><p class="msg">PIN aktif.</p><button class="go alt" id="delpin">Hapus PIN</button>':'<h2>PIN pendamping</h2><p class="sub" style="font-size:17px">Kunci layar ini agar anak tidak melihat kunci jawaban.</p><div class="form"><input class="inp" id="npin" inputmode="numeric" maxlength="4" placeholder="4 angka" aria-label="PIN baru"><button class="ghost" id="setpin">Pasang PIN</button></div>')+'<h2>Cadangan data</h2><p class="sub" style="font-size:17px">Simpan data semua anak ke berkas, atau pulihkan di perangkat lain.</p><button class="go alt" id="ekspor">⬇️ Simpan cadangan</button><label class="go alt" style="text-align:center;cursor:pointer">⬆️ Pulihkan cadangan<input type="file" id="impor" accept=".json,application/json" hidden></label><p class="msg" id="bm"></p><button class="go" id="back" style="--c:var(--mtk)">Kembali</button>';
+  var sp=document.getElementById("setpin");if(sp)sp.onclick=function(){var v=document.getElementById("npin").value.trim();if(/^\d{4}$/.test(v)){DB.cfg.pin=v;simpanDB();ortuScreen()}else document.getElementById("bm").textContent="PIN harus 4 angka."};
+  var dp=document.getElementById("delpin");if(dp)dp.onclick=function(){DB.cfg.pin="";simpanDB();ortuScreen()};
+  document.getElementById("ekspor").onclick=function(){try{var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(DB)],{type:"application/json"}));a.download="cadangan-latihan-ulangan.json";a.click()}catch(e){document.getElementById("bm").textContent="Tidak bisa menyimpan di sini. Buka aplikasi di browser."}};
+  document.getElementById("impor").onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var x=JSON.parse(r.result);if(!x||!x.p)throw 0;Object.keys(x.p).forEach(function(n){var d=x.p[n];if(!DB.p[n])DB.p[n]=d;else{d.h.forEach(function(h){if(!DB.p[n].h.some(function(o){return o.t===h.t}))DB.p[n].h.push(h)});DB.p[n].h.sort(function(a,b){return a.t-b.t});for(var id in d.w)DB.p[n].w[id]=Math.max(DB.p[n].w[id]||0,d.w[id])}});if(!DB.aktif)DB.aktif=x.aktif;simpanDB();document.getElementById("bm").textContent="Cadangan berhasil dipulihkan."}catch(er){document.getElementById("bm").textContent="Berkas cadangan tidak valid."}};r.readAsText(f)};
+  $.querySelectorAll(".seg button").forEach(function(b){b.onclick=function(){var v=b.dataset.v;DB.cfg[b.dataset.k]=v==="true"?true:v==="false"?false:+v;simpanDB();ortuScreen();window.scrollTo(0,y)}});
+  document.getElementById("back").onclick=home;
+}
+function hasil(){
+  var p=prof(),n=S.qs.length,s=S.skor,sebelum=lencana().filter(function(b){return b.ok}).length;
+  p.h.push({k:S.k,b:S.bab,s:s,n:n,t:Date.now()});if(p.h.length>60)p.h=p.h.slice(-60);simpanDB();
+  var baru=lencana().filter(function(b){return b.ok}).slice(sebelum);
+  var nama=S.ulang?"Latihan Ulang":D[S.k].n,st=bintang(s/n*10);
+  var pesan=s/n>=.8?"Luar biasa! Kamu pintar sekali.":s/n>=.5?"Bagus! Sedikit lagi sempurna.":"Tidak apa-apa. Ayo latihan lagi pelan-pelan.";
+  var rev=S.ortu&&S.salah.length?'<h2>Yang perlu diulang</h2>'+S.salah.map(function(q){return '<div class="rev"><b>'+q.t+'</b><br>Jawaban benar: '+(q.o?"abcd".charAt(q.o.indexOf(q.b))+". ":"")+q.b+'<br>'+q.e+'</div>'}).join(""):"";
+  $.innerHTML='<div style="--c:'+(S.ulang?"var(--ind)":D[S.k].c)+'"><h2 style="text-align:center">'+nama+'</h2><div class="stars" aria-label="'+st+' bintang">'+bintangHtml(st)+'</div>'+
+    '<div class="skor">'+s+' dari '+n+' benar</div><p class="msg">'+(S.timeout?"⏰ Waktu habis. ":"")+pesan+'</p>'+
+    (baru.length?'<div class="fb ok">🏅 Lencana baru: '+baru.map(function(b){return b.i+" "+b.n}).join(", ")+'</div>':"")+rev+
+    (S.salah.length?'<button class="go" id="ul">💪 Latih soal yang salah</button>':"")+
+    '<button class="go alt" id="ulang">'+(S.ulang?"Menu":"Ulangi latihan")+'</button><button class="go alt" id="pg">📈 Lihat progres</button>'+(S.ulang?"":'<button class="go alt" id="bp">📚 Pilih bab lain</button><button class="go alt" id="mn">🏠 Menu</button>')+'</div>';
+  if(S.salah.length)document.getElementById("ul").onclick=mulaiUlang;
+  document.getElementById("ulang").onclick=function(){S.ulang?home():mulai(S.k,S.bab)};
+  document.getElementById("pg").onclick=progres;
+  var bp=document.getElementById("bp");if(bp){var sk0=S.k;bp.onclick=function(){bab(sk0)};document.getElementById("mn").onclick=home}
+}
+
+function perBab(k){var d=D[k],n=d.bab.length;return d.bab.concat(["Campuran"]).map(function(nm,i){var h=hist(k).filter(function(r){return r.b===(i<n?i:-1)});if(!h.length)return "";var m=h.reduce(function(a,r){return a+sk(r)},0)/h.length;return '<div style="font-size:16px">• '+nm+': rata-rata '+m.toFixed(1)+'/10 ('+h.length+'x)</div>'}).join("")}
+function progres(){
+  var p=prof(),tgl=new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
+  var kel=Object.keys(D).map(function(k){var h=hist(k);
+    return '<div class="rev"><b style="color:'+D[k].c+'">'+D[k].i+' '+D[k].n+'</b><br>'+(h.length?'Terbaik '+best(k)+'/10, rata-rata '+rata(k).toFixed(1)+', '+h.length+' latihan'+
+      '<div class="bars">'+h.slice(-8).map(function(r){return '<div><span>'+sk(r)+'</span><i style="height:'+(r.s/r.n*100)+'%;background:'+D[k].c+'"></i></div>'}).join("")+'</div>'+perBab(k):'Belum dicoba')+'</div>'}).join("");
+  var tr=Object.keys(D).filter(function(k){return hist(k).length}).sort(function(a,b){return rata(a)-rata(b)}),u=nUlang();
+  var saran=!tr.length?"Mulai latihan dulu untuk melihat saran.":rata(tr[0])>=9&&!u?"Hebat! Semua pelajaran sudah bagus.":"Perlu latihan lagi: <b>"+D[tr[0]].n+"</b>"+(u?". Ada "+u+" soal yang masih sering salah.":".");
+  $.innerHTML='<h1>Progres<span>'+esc(DB.aktif)+'</span></h1><p class="sub">Dicetak '+tgl+'</p>'+
+    '<div class="fb ok" style="background:var(--paper);color:var(--ink)">'+saran+'</div>'+kel+
+    '<h2>Lencana</h2><div class="badges">'+lencana().map(function(b){return '<div class="bd'+(b.ok?"":" off")+'"><span>'+b.i+'</span>'+b.n+'</div>'}).join("")+'</div>'+
+    '<button class="go alt noprint" id="cetak">🖨️ Cetak hasil (PDF)</button><p class="msg noprint" id="cm"></p><button class="go noprint" id="back" style="--c:var(--mtk)">Kembali</button>';
+  document.getElementById("cetak").onclick=function(){try{window.print()}catch(e){document.getElementById("cm").textContent="Cetak tidak tersedia di sini. Buka berkas ini di browser, lalu cetak."}};
+  document.getElementById("back").onclick=home;
+}
+if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
+document.addEventListener("keydown",function(e){if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key.toLowerCase()==="s"){var l=document.getElementById("lw");if(l&&l.style.display!=="none")l.click();return}var m={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3}[e.key.toLowerCase()];if(m===undefined)return;var b=document.querySelector('.opt[data-i="'+m+'"]');if(b&&!b.disabled)b.click()});
+home();
+</script>
+</body>
+</html>
