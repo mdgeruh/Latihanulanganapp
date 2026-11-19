@@ -1,4 +1,4 @@
-# Latihan Ulangan Kelas 1 SD (v0.13)
+# Latihan Ulangan Kelas 1 SD (v0.14)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
@@ -38,6 +38,11 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 - `SUMMARY.md`: ringkasan proyek, bank soal, fitur, dan struktur berkas
 
 ## Changelog
+### v0.14
+- Tampilan tablet (layar 720 px ke atas): kolom 880 px, teks dan tombol lebih besar (minimal 56 px)
+- Kartu pelajaran, bab, dan nama anak tersusun berderet dengan ikon besar di atas; pilihan jawaban 2 kolom dengan huruf a-d lebih besar
+- Gambar soal, bintang, grafik, dan lencana (3 kolom) diperbesar; tombol besar dibatasi lebarnya agar tidak terlalu lebar
+- Versi cache offline dinaikkan ke ulangan-v0.14
 ### v0.13
 - Perbaikan tampilan: tombol kecil (Menu, Bab, Bacakan, Lewati, pilihan pengaturan) diperbesar menjadi minimal 48 px
 - Pilihan jawaban memakai lencana huruf a-d bulat; jawaban benar/salah diberi tanda ✓/✗ selain warna
