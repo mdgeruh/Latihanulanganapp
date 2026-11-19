@@ -171,6 +171,62 @@ h1{font-size:44px;margin:2px 0}h1 span{font-size:26px}
 .vb details{margin:6px 0 12px}
 .vb .go{margin-top:10px;font-size:22px;padding:10px}
 @media print{.vo{display:none!important}}
+
+/* v0.17: layar soal muat di tablet landscape (tinggi layar pendek) */
+@media (min-width:720px) and (orientation:landscape){
+#app{padding-top:12px;padding-bottom:20px}
+.qz{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:28px;align-items:start}
+.qa{position:static;text-align:center}
+.qa .vis{font-size:clamp(44px,12vh,112px);padding:clamp(8px,2.5vh,30px) 12px;margin-bottom:8px}
+.qa h2{font-size:clamp(24px,4.4vh,40px);margin:8px 0 10px}
+.qa .ghost{min-height:56px;font-size:20px;margin:4px 6px}
+.qb .opts{grid-template-columns:1fr;gap:clamp(8px,1.8vh,16px);margin-top:0}
+.qb .opt{font-size:clamp(26px,4.4vh,36px);min-height:clamp(64px,10vh,100px);padding:8px 22px}
+.qb .lt{width:clamp(40px,6vh,56px);height:clamp(40px,6vh,56px);font-size:clamp(22px,3.6vh,32px)}
+}
+
+/* v0.18: tampilan home dan pilih bab di tablet */
+@media (min-width:720px){
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));align-items:stretch}
+.card{min-width:0;align-content:center;justify-items:center}
+.card b{font-size:clamp(24px,2.4vw,34px);overflow-wrap:anywhere;hyphens:auto;line-height:1.15}
+.card small{font-size:clamp(17px,1.8vw,21px)}
+}
+@media (min-width:720px) and (orientation:landscape){
+.card .ik{font-size:clamp(44px,9vh,84px)}
+.card{padding:clamp(12px,2.6vh,28px) 14px}
+h1{font-size:clamp(34px,6.5vh,60px)}h1 span{font-size:clamp(22px,4vh,32px)}
+.sub{margin-bottom:clamp(8px,2vh,18px)}
+}
+
+/* v0.19: halaman home tablet */
+.foot{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:18px}
+.foot .ghost,.foot .qbtn{margin:0}
+@media (min-width:720px){
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:10px}
+.acts .go{max-width:none;margin:0;width:100%}
+.foot{margin-top:24px}
+}
+@media (min-width:720px) and (orientation:landscape){
+.acts{margin-top:clamp(4px,1.5vh,14px)}
+.acts .go{font-size:clamp(22px,3.8vh,32px);padding:clamp(10px,2.2vh,18px)}
+.foot{margin-top:clamp(10px,2.5vh,24px)}
+}
+
+/* v0.20: layar isi nama anak */
+.form .add{flex:none;background:var(--mtk);color:#fff;border-color:var(--mtk);font-weight:800}
+:root[data-theme="dark"] .form .add{color:#0E1530}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .form .add{color:#0E1530}}
+@media (min-width:720px){
+.form{gap:16px;padding:16px 20px;margin-top:clamp(14px,3vh,28px)}
+.form .inp{font-size:30px;min-height:72px;padding:12px 20px;border-radius:18px}
+.form .add{min-height:72px;font-size:26px;padding:8px 34px}
+}
+
+/* v0.21: tombol ? di pojok kanan atas */
+.qbtn{position:fixed;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));margin:0!important;z-index:5;width:48px;height:48px;min-height:48px;padding:0;display:flex;align-items:center;justify-content:center}
+#app h1{padding-right:64px}
+@media (min-width:720px){.qbtn{top:max(16px,env(safe-area-inset-top,0px));right:max(20px,env(safe-area-inset-right,0px));width:56px;height:56px;min-height:56px}}
 </style>
 </head>
 <body>
@@ -375,8 +431,13 @@ function lencana(){var h=prof().h,ks={};h.forEach(function(r){if(r.k!=="ulang")k
   ]}
 
 
-var VER="v0.16";
+var VER="v0.21";
 var CHG=[
+ {v:"v0.21",t:["Tombol ? dipindah ke pojok kanan atas layar"]},
+ {v:"v0.20",t:["Layar isi nama anak di tablet: kolom nama dan tombol Tambah lebih besar, tombol Tambah berwarna jelas","Tombol ? dipindah ke tengah bawah"]},
+ {v:"v0.19",t:["Halaman home tablet: tombol latihan ulang dan progres selebar kartu dan berdampingan","Tombol Ganti anak, Pendamping, dan ? dirapikan di tengah"]},
+ {v:"v0.18",t:["Tampilan home dan pilih bab di tablet dirapikan: teks tidak lagi keluar dari kartu","Kartu sama tinggi, ukuran ikon dan judul menyesuaikan layar"]},
+ {v:"v0.17",t:["Layar soal di tablet landscape kini muat: teks soal tidak lagi terpotong","Ukuran gambar, teks soal, dan pilihan jawaban menyesuaikan tinggi layar"]},
  {v:"v0.16",t:["Tombol ? di menu untuk melihat versi aplikasi dan daftar perubahan terakhir","Tombol ? juga ada di layar pilih nama anak","Jendela bisa ditutup dengan tombol Tutup, ketuk di luar jendela, atau tombol Esc"]},
  {v:"v0.15",t:["Tablet landscape: layar soal dua kolom, kartu pelajaran berderet","Aplikasi terpasang boleh diputar (orientasi bebas)","Area sentuh lebih lapang, efek sorot untuk mouse dan trackpad","Tepi layar aman untuk perangkat dengan takik"]},
  {v:"v0.14",t:["Tampilan tablet (layar 720 px ke atas): kolom lebih lebar, teks dan tombol lebih besar"]}
@@ -401,7 +462,7 @@ function anak(){
   var ns=Object.keys(DB.p);
   $.innerHTML='<h1>Latihan Ulangan<span>Kelas 1 SD</span></h1><p class="sub">'+(ns.length?"Siapa yang akan berlatih?":"Siapa nama adik? Nilai dan bintang disimpan atas namanya.")+'</p><div class="grid">'+
     ns.map(function(n){return '<button class="card" style="--c:var(--mtk)" data-n="'+esc(n)+'"><span class="ik">🧒</span><b>'+esc(n)+'</b><small>'+DB.p[n].h.length+' kali latihan</small></button>'}).join("")+
-    '</div><div class="form"><input class="inp" id="nama" maxlength="20" placeholder="Nama anak" aria-label="Nama anak"><button class="ghost" id="tbh">Tambah</button></div><button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button>';
+    '</div><div class="form"><input class="inp" id="nama" maxlength="20" placeholder="Nama anak" aria-label="Nama anak"><button class="ghost add" id="tbh">➕ Tambah</button></div><button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button>';
   $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){DB.aktif=b.dataset.n;simpanDB();home()}});
   function tambah(){var n=document.getElementById("nama").value.trim().slice(0,20);if(!n)return;if(!DB.p[n])DB.p[n]={h:[],w:{}};DB.aktif=n;simpanDB();home()}
   document.getElementById("tbh").onclick=tambah;
@@ -416,10 +477,9 @@ function home(){
   $.innerHTML='<h1>Halo, '+esc(DB.aktif)+'!<span>Latihan Ulangan Kelas 1</span></h1><p class="sub">Pilih pelajaran, ya!</p><div class="grid">'+
     Object.keys(D).map(function(k){var b=best(k);
       return '<button class="card" style="--c:'+D[k].c+'" data-k="'+k+'"><span class="ik">'+D[k].i+'</span><b>'+D[k].n+'</b><small>'+(b?'Nilai terbaik '+b+' dari 10':buat(k).length+' soal, belum dicoba')+'</small></button>'}).join("")+'</div>'+
-    (u?'<button class="go" id="ul" style="--c:var(--ind)">💪 Latihan ulang soal sulit ('+u+')</button>':'')+
-    '<button class="go alt" id="pg">📈 Lihat progres</button>'+
-    
-    '<button class="ghost" id="gt" style="margin-top:14px">Ganti anak</button> <button class="ghost" id="od" style="margin-top:14px">🔒 Pendamping</button> <button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button>';
+    '<div class="acts">'+(u?'<button class="go" id="ul" style="--c:var(--ind)">💪 Latihan ulang soal sulit ('+u+')</button>':'')+
+    '<button class="go alt" id="pg">📈 Lihat progres</button></div>'+
+    '<div class="foot"><button class="ghost" id="gt">Ganti anak</button> <button class="ghost" id="od">🔒 Pendamping</button> <button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button></div>';
   $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){bab(b.dataset.k)}});
   if(u)document.getElementById("ul").onclick=mulaiUlang;
   document.getElementById("pg").onclick=progres;

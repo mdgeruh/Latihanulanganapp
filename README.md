@@ -1,4 +1,4 @@
-# Latihan Ulangan Kelas 1 SD (v0.16)
+# Latihan Ulangan Kelas 1 SD (v0.21)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
@@ -41,6 +41,26 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 Ketuk tombol **?** di menu utama (sebelah "Pendamping") atau di layar pilih nama anak untuk melihat versi aplikasi dan daftar perubahan terakhir. Daftar ini ada di variabel `CHG` pada index.html; tambahkan entri baru di bagian paling atas setiap rilis dan ubah `VER`.
 
 ## Changelog
+### v0.21
+- Tombol ? dipindah ke pojok kanan atas layar (menu dan layar pilih anak)
+- Versi cache offline dinaikkan ke ulangan-v0.21
+
+### v0.20
+- Layar isi nama anak: kolom nama dan tombol Tambah lebih besar dan jelas di tablet; tombol ? di tengah bawah
+- Versi cache offline dinaikkan ke ulangan-v0.20
+
+### v0.19
+- Halaman home tablet: tombol latihan ulang dan progres selebar kartu dan berdampingan; tombol bawah dirapikan
+- Versi cache offline dinaikkan ke ulangan-v0.19
+
+### v0.18
+- Tampilan home dan pilih bab di tablet dirapikan: teks tidak keluar dari kartu, kartu sama tinggi
+- Versi cache offline dinaikkan ke ulangan-v0.18
+
+### v0.17
+- Layar soal di tablet landscape muat tanpa teks terpotong; ukuran menyesuaikan tinggi layar
+- Versi cache offline dinaikkan ke ulangan-v0.17
+
 ### v0.16
 - Tombol ? di menu utama dan layar pilih nama anak: jendela berisi versi aplikasi, perubahan terakhir, dan perubahan sebelumnya (dapat dilipat)
 - Jendela ditutup lewat tombol Tutup, ketuk di luar jendela, atau Esc; pintasan jawaban a-d tidak aktif selama jendela terbuka
