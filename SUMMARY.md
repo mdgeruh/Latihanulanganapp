@@ -1,11 +1,11 @@
-# Ringkasan Proyek: Latihan Ulangan Kelas 1 SD (v0.15)
+# Ringkasan Proyek: Latihan Ulangan Kelas 1 SD (v0.16)
 
 ## Tujuan
 Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata pelajaran: Matematika, Bahasa Indonesia, dan Pendidikan Pancasila.
 
 ## Status
-- Versi aplikasi: v0.15
-- Fase 1 sampai 13 selesai; uji coba dengan 1 anak (anak pengguna sendiri) belum dilakukan
+- Versi aplikasi: v0.16
+- Fase 1 sampai 14 selesai; uji coba dengan 1 anak (anak pengguna sendiri) belum dilakukan
 - Semua soal pilihan ganda 4 opsi (a sampai d), total 136 soal
 
 ## Bank soal
@@ -24,6 +24,7 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 - Navigasi: tombol Menu dan Bab di layar soal dengan konfirmasi keluar, titik progres per soal, tombol Pilih bab lain di hasil, pintasan keyboard a-d
 - Lewati soal: tombol Lewati dulu memindahkan soal ke antrean akhir, lalu dikerjakan setelah soal terakhir
 - Layar pendamping: jumlah soal, batas waktu, kecepatan suara, catatan pendamping, kunci jawaban, daftar soal yang perlu didampingi, PIN 4 angka opsional
+- Tombol ? di menu dan layar pilih anak: menampilkan versi aplikasi dan perubahan terakhir
 - Cadangan dan pemulihan data (JSON)
 - PWA: bisa dipasang dan jalan offline setelah dibuka sekali lewat HTTPS
 
@@ -31,7 +32,7 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 | Berkas | Isi |
 |---|---|
 | index.html | Seluruh aplikasi (soal, tampilan, logika) dalam satu file |
-| sw.js | Service worker, cache offline (ulangan-v0.15) |
+| sw.js | Service worker, cache offline (ulangan-v0.16) |
 | manifest.webmanifest | Data PWA |
 | icons/ | Ikon 192, 512, dan maskable 512 |
 | README.md | Cara pakai, cara menambah soal, changelog |

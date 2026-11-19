@@ -159,6 +159,18 @@ h1{font-size:44px;margin:2px 0}h1 span{font-size:26px}
 .dots{margin:8px 0 12px}
 .card{padding:18px 14px}.card .ik{font-size:64px}
 }
+
+/* v0.16: tombol ? versi dan perubahan */
+.qbtn{min-width:48px;padding-left:0;padding-right:0;font-weight:800;font-size:22px;margin-top:14px}
+.vo{position:fixed;inset:0;z-index:50;background:rgba(10,16,40,.55);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.vb{background:var(--paper);color:var(--ink);border:3px solid var(--line);border-radius:22px;width:100%;max-width:560px;max-height:85dvh;overflow:auto;padding:18px 20px;font-size:18px;line-height:1.4}
+.vb h2{margin:0 0 2px}
+.vb .vn{display:inline-block;background:var(--mtk);color:var(--paper);border-radius:999px;padding:2px 14px;font-weight:800;font-size:18px;margin:2px 0 10px}
+.vb ul{margin:6px 0 12px;padding-left:22px}
+.vb li{margin:4px 0}
+.vb details{margin:6px 0 12px}
+.vb .go{margin-top:10px;font-size:22px;padding:10px}
+@media print{.vo{display:none!important}}
 </style>
 </head>
 <body>
@@ -362,14 +374,38 @@ function lencana(){var h=prof().h,ks={};h.forEach(function(r){if(r.k!=="ulang")k
     {i:"💪",n:"Ulang soal sulit",ok:h.some(function(r){return r.k==="ulang"})}
   ]}
 
+
+var VER="v0.16";
+var CHG=[
+ {v:"v0.16",t:["Tombol ? di menu untuk melihat versi aplikasi dan daftar perubahan terakhir","Tombol ? juga ada di layar pilih nama anak","Jendela bisa ditutup dengan tombol Tutup, ketuk di luar jendela, atau tombol Esc"]},
+ {v:"v0.15",t:["Tablet landscape: layar soal dua kolom, kartu pelajaran berderet","Aplikasi terpasang boleh diputar (orientasi bebas)","Area sentuh lebih lapang, efek sorot untuk mouse dan trackpad","Tepi layar aman untuk perangkat dengan takik"]},
+ {v:"v0.14",t:["Tampilan tablet (layar 720 px ke atas): kolom lebih lebar, teks dan tombol lebih besar"]}
+];
+function tentang(opener){
+  if(document.getElementById("vo"))return;
+  function ul(a){return "<ul>"+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>"}
+  var o=document.createElement("div");o.className="vo noprint";o.id="vo";
+  o.innerHTML='<div class="vb" role="dialog" aria-modal="true" aria-labelledby="vj"><h2 id="vj">Tentang aplikasi</h2><span class="vn">Versi '+esc(VER)+'</span><div><b>Perubahan terakhir ('+esc(CHG[0].v)+')</b></div>'+ul(CHG[0].t)+
+    '<details><summary>Perubahan sebelumnya</summary>'+CHG.slice(1).map(function(c){return "<div><b>"+esc(c.v)+"</b></div>"+ul(c.t)}).join("")+'</details>'+
+    '<button class="go" id="vx" style="--c:var(--mtk)">Tutup</button></div>';
+  document.body.appendChild(o);
+  function tutup(){document.removeEventListener("keydown",esc2,true);o.remove();try{if(opener)opener.focus()}catch(e){}}
+  function esc2(e){if(e.key==="Escape"){e.preventDefault();tutup()}}
+  document.addEventListener("keydown",esc2,true);
+  o.onclick=function(e){if(e.target===o)tutup()};
+  document.getElementById("vx").onclick=tutup;
+  document.getElementById("vx").focus();
+}
+
 function anak(){
   var ns=Object.keys(DB.p);
   $.innerHTML='<h1>Latihan Ulangan<span>Kelas 1 SD</span></h1><p class="sub">'+(ns.length?"Siapa yang akan berlatih?":"Siapa nama adik? Nilai dan bintang disimpan atas namanya.")+'</p><div class="grid">'+
     ns.map(function(n){return '<button class="card" style="--c:var(--mtk)" data-n="'+esc(n)+'"><span class="ik">🧒</span><b>'+esc(n)+'</b><small>'+DB.p[n].h.length+' kali latihan</small></button>'}).join("")+
-    '</div><div class="form"><input class="inp" id="nama" maxlength="20" placeholder="Nama anak" aria-label="Nama anak"><button class="ghost" id="tbh">Tambah</button></div>';
+    '</div><div class="form"><input class="inp" id="nama" maxlength="20" placeholder="Nama anak" aria-label="Nama anak"><button class="ghost" id="tbh">Tambah</button></div><button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button>';
   $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){DB.aktif=b.dataset.n;simpanDB();home()}});
   function tambah(){var n=document.getElementById("nama").value.trim().slice(0,20);if(!n)return;if(!DB.p[n])DB.p[n]={h:[],w:{}};DB.aktif=n;simpanDB();home()}
   document.getElementById("tbh").onclick=tambah;
+  document.getElementById("vq").onclick=function(){tentang(this)};
   document.getElementById("nama").onkeydown=function(e){if(e.key==="Enter")tambah()};
 }
 
@@ -383,12 +419,13 @@ function home(){
     (u?'<button class="go" id="ul" style="--c:var(--ind)">💪 Latihan ulang soal sulit ('+u+')</button>':'')+
     '<button class="go alt" id="pg">📈 Lihat progres</button>'+
     
-    '<button class="ghost" id="gt" style="margin-top:14px">Ganti anak</button> <button class="ghost" id="od" style="margin-top:14px">🔒 Pendamping</button>';
+    '<button class="ghost" id="gt" style="margin-top:14px">Ganti anak</button> <button class="ghost" id="od" style="margin-top:14px">🔒 Pendamping</button> <button class="ghost qbtn" id="vq" aria-label="Versi dan perubahan terakhir" title="Versi dan perubahan terakhir">?</button>';
   $.querySelectorAll(".card").forEach(function(b){b.onclick=function(){bab(b.dataset.k)}});
   if(u)document.getElementById("ul").onclick=mulaiUlang;
   document.getElementById("pg").onclick=progres;
   document.getElementById("gt").onclick=anak;
   document.getElementById("od").onclick=bukaOrtu;
+  document.getElementById("vq").onclick=function(){tentang(this)};
   var oc=document.getElementById("ortu");if(oc)oc.onchange=function(e){S.ortu=e.target.checked};
 }
 
@@ -528,7 +565,7 @@ function progres(){
   document.getElementById("back").onclick=home;
 }
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
-document.addEventListener("keydown",function(e){if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key.toLowerCase()==="s"){var l=document.getElementById("lw");if(l&&l.style.display!=="none")l.click();return}var m={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3}[e.key.toLowerCase()];if(m===undefined)return;var b=document.querySelector('.opt[data-i="'+m+'"]');if(b&&!b.disabled)b.click()});
+document.addEventListener("keydown",function(e){if(document.getElementById("vo"))return;if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key.toLowerCase()==="s"){var l=document.getElementById("lw");if(l&&l.style.display!=="none")l.click();return}var m={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3}[e.key.toLowerCase()];if(m===undefined)return;var b=document.querySelector('.opt[data-i="'+m+'"]');if(b&&!b.disabled)b.click()});
 home();
 </script>
 </body>
