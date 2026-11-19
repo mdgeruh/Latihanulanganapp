@@ -111,6 +111,54 @@ h1{font-size:54px}h1 span{font-size:32px}h2{font-size:34px}
 .dots i{width:20px;height:20px}
 .rev{font-size:21px}
 }
+
+/* v0.15: penyempurnaan tablet */
+html{-webkit-text-size-adjust:100%}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.card:hover,.opt:not(:disabled):hover{transform:translateY(-2px)}.go:hover{filter:brightness(1.07)}.ghost:hover,.seg button:hover{border-color:var(--mute)}}
+@media (min-width:720px){
+#app{padding-left:max(28px,calc(env(safe-area-inset-left,0px) + 16px));padding-right:max(28px,calc(env(safe-area-inset-right,0px) + 16px))}
+.top{margin-bottom:6px}
+.dots{gap:8px;margin:14px 0 18px}
+.dots i.cur{box-shadow:0 0 0 4px var(--star)}
+.bar{height:18px;margin:14px 0 18px}
+.kel{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin:10px 0}
+.kel .rev{margin:0}
+.bars div{font-size:19px}
+.rev,.note{line-height:1.4}
+.seg{gap:12px}
+.form{padding:14px 18px}
+#fb:not(:empty){padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.fb{padding:16px 20px;border-radius:18px}
+}
+@media (min-width:1000px){
+#app{max-width:1180px;padding-top:32px}
+h1{font-size:60px}
+.qz{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:40px;align-items:start}
+.qa{position:sticky;top:16px;text-align:center}
+.qa h2{font-size:42px;margin:14px 0 16px}
+.qa .vis{font-size:112px;padding:34px 20px;border-radius:26px}
+.qa .ghost{min-height:64px;font-size:23px;padding:8px 26px;margin:4px 6px}
+.qb .opts{grid-template-columns:1fr;gap:18px;margin-top:0}
+.qb .opt{font-size:36px;min-height:104px;padding:18px 26px;border-radius:22px}
+.qb .lt{width:56px;height:56px;font-size:32px}
+.qb .go{max-width:none;font-size:34px;padding:20px}
+.grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{padding:28px 18px}.card .ik{font-size:84px}.card b{font-size:34px}.card small{font-size:21px}
+.kel{grid-template-columns:repeat(3,1fr)}
+.badges{grid-template-columns:repeat(5,1fr);gap:14px}
+.stars{font-size:112px}
+}
+@media (min-width:900px) and (max-height:760px) and (orientation:landscape){
+#app{padding-top:16px;padding-bottom:28px}
+h1{font-size:44px;margin:2px 0}h1 span{font-size:26px}
+.qa .vis{font-size:80px;padding:18px}
+.qa h2{font-size:34px;margin:10px 0}
+.qb .opt{min-height:82px;font-size:32px;padding:12px 22px}
+.qb .lt{width:48px;height:48px;font-size:28px}
+.dots{margin:8px 0 12px}
+.card{padding:18px 14px}.card .ik{font-size:64px}
+}
 </style>
 </head>
 <body>
@@ -372,8 +420,8 @@ function tanya(){
   var q=S.qs[S.i],n=S.qs.length,c=D[q.k].c;S.done=0;
   $.innerHTML='<div style="--c:'+c+'"><div class="top"><span class="nv"><button class="ghost" id="x">🏠 Menu</button>'+(S.ulang?"":'<button class="ghost" id="bb">📚 Bab</button>')+'</span><span>'+(S.ulang?"Latihan ulang: ":"")+'Soal '+(S.i+1)+' dari '+n+(S.skp[q.id]?' · dilewati tadi':'')+'</span>'+(S.sisa>0?'<span id="tm" class="tm">⏱ '+fmt(S.sisa)+'</span>':'')+'</div><div id="kl" aria-live="polite"></div>'+
     (n<=20?'<div class="dots" aria-hidden="true">'+S.qs.map(function(z,i){return '<i class="'+(S.hs[i]===1?"ok":S.hs[i]===0?"no":"")+(i===S.i?" cur":"")+(S.hs[i]===undefined&&S.skp[z.id]?" sk":"")+'"></i>'}).join("")+'</div>':'<div class="bar"><i style="width:'+(S.i/n*100)+'%;background:'+c+'"></i></div>')+
-    (q.v?'<div class="vis" aria-hidden="true">'+q.v+'</div>':'')+'<h2>'+q.t+'</h2>'+
-    '<button class="ghost" id="say">🔊 Bacakan soal</button>'+(S.i<n-1?' <button class="ghost" id="lw">⏭ Lewati dulu</button>':'')+'<div id="area"></div><div id="fb" aria-live="polite"></div></div>';
+    '<div class="qz"><div class="qa">'+(q.v?'<div class="vis" aria-hidden="true">'+q.v+'</div>':'')+'<h2>'+q.t+'</h2>'+
+    '<button class="ghost" id="say">🔊 Bacakan soal</button>'+(S.i<n-1?' <button class="ghost" id="lw">⏭ Lewati dulu</button>':'')+'</div><div class="qb"><div id="area"></div><div id="fb" aria-live="polite"></div></div></div></div>';
   function pergi(fn){
     if(S.i===0&&!S.done){fn();return}
     var k=document.getElementById("kl");
@@ -473,7 +521,7 @@ function progres(){
   var tr=Object.keys(D).filter(function(k){return hist(k).length}).sort(function(a,b){return rata(a)-rata(b)}),u=nUlang();
   var saran=!tr.length?"Mulai latihan dulu untuk melihat saran.":rata(tr[0])>=9&&!u?"Hebat! Semua pelajaran sudah bagus.":"Perlu latihan lagi: <b>"+D[tr[0]].n+"</b>"+(u?". Ada "+u+" soal yang masih sering salah.":".");
   $.innerHTML='<h1>Progres<span>'+esc(DB.aktif)+'</span></h1><p class="sub">Dicetak '+tgl+'</p>'+
-    '<div class="fb ok" style="background:var(--paper);color:var(--ink)">'+saran+'</div>'+kel+
+    '<div class="fb ok" style="background:var(--paper);color:var(--ink)">'+saran+'</div><div class="kel">'+kel+'</div>'+
     '<h2>Lencana</h2><div class="badges">'+lencana().map(function(b){return '<div class="bd'+(b.ok?"":" off")+'"><span>'+b.i+'</span>'+b.n+'</div>'}).join("")+'</div>'+
     '<button class="go alt noprint" id="cetak">🖨️ Cetak hasil (PDF)</button><p class="msg noprint" id="cm"></p><button class="go noprint" id="back" style="--c:var(--mtk)">Kembali</button>';
   document.getElementById("cetak").onclick=function(){try{window.print()}catch(e){document.getElementById("cm").textContent="Cetak tidak tersedia di sini. Buka berkas ini di browser, lalu cetak."}};

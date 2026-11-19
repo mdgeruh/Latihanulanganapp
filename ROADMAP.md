@@ -1,6 +1,6 @@
 # Roadmap: Latihan Ulangan Kelas 1 SD
 
-Status per v0.14. Tanda [x] selesai, [ ] belum.
+Status per v0.15. Tanda [x] selesai, [ ] belum.
 
 ## Selesai
 - [x] Fase 1 (v0.1): MVP, skor bintang, suara pembaca soal, mode pendamping
@@ -15,6 +15,7 @@ Status per v0.14. Tanda [x] selesai, [ ] belum.
 - [x] Fase 10 (v0.12): lewati soal dan kembali ke soal yang dilewati setelah soal terakhir
 - [x] Fase 11 (v0.13): perbaikan tampilan (tombol lebih besar, lencana huruf a-d, tanda benar/salah, umpan balik menempel, layar lebar)
 - [x] Fase 12 (v0.14): tampilan tablet (kolom lebih lebar, kartu berderet, teks dan tombol lebih besar)
+- [x] Fase 13 (v0.15): tablet landscape (layar soal dua kolom, progres berderet), orientasi bebas, sentuh dan mouse lebih nyaman
 
 ## Berikutnya: uji coba (dilakukan pengguna)
 - [ ] Uji dengan 1 anak (anak sendiri) memakai daftar uji coba di README.md
