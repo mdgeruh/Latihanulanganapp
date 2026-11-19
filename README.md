@@ -1,10 +1,10 @@
-# Latihan Ulangan Kelas 1 SD (v0.32)
+# Latihan Ulangan Kelas 1 SD (v0.35)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
 ## Cara pakai
 Ada dua cara:
-1. **Buka langsung:** buka `index.html` di browser HP/laptop. Tidak perlu internet (font rounded hanya tampil jika online, kecuali berkas font dipasang di folder `fonts`). Cara ini tidak bisa dipasang sebagai aplikasi.
+1. **Buka langsung (disarankan untuk HP):** buka `latihan-ulangan-satu-file.html`, satu berkas yang sudah memuat soal dan font Baloo 2, jadi tidak butuh berkas lain dan tidak butuh internet. Membuka `index.html` langsung hanya cocok di laptop, karena browser HP sering tidak bisa membaca `soal.js` dan folder `fonts` yang ada di sampingnya, sehingga soal atau font tidak muncul. Cara ini tidak bisa dipasang sebagai aplikasi.
 2. **Pasang sebagai aplikasi (PWA):** unggah SEMUA isi zip ini ke hosting HTTPS (misalnya Netlify Drop atau GitHub Pages), lalu buka alamatnya sekali saat online. Android Chrome: menu titik tiga, "Pasang aplikasi". iPhone Safari: Bagikan, "Tambah ke Layar Utama". Setelah itu aplikasi jalan offline.
 
 Data tersimpan di browser perangkat. Untuk memindahkan data ke perangkat lain, pakai "Simpan cadangan" dan "Pulihkan cadangan" di Layar pendamping.
@@ -16,10 +16,15 @@ Data tersimpan di browser perangkat. Untuk memindahkan data ke perangkat lain, p
 - Soal sesuai materi yang sudah diajarkan guru? Catat yang perlu diganti.
 - Apakah anak mau mengulang? Catat bagian yang membosankan atau sulit.
 
-## Menambah soal
-Soal Penjumlahan dan Pengurangan juga dibuat otomatis oleh fungsi `gen(bab, jumlah)`; ubah batas angkanya di fungsi itu.
+## Pemeriksaan dan uji otomatis (untuk pengembang)
+- `node periksa-soal.js`: memeriksa seluruh bank soal di soal.js (4 opsi, tidak ada opsi kembar atau kosong, nomor bab sah, catatan pendamping terisi, tidak ada soal kembar). Jalankan setiap selesai menambah atau mengubah soal. Keluar dengan kode 1 jika ada masalah
+- `python3 uji/uji-alur.py [berkas.html]`: uji alur utama di browser (tambah anak, mulai latihan, lewati, jawab, hasil, riwayat, soal sulit diprioritaskan, soal hitung benda). Perlu `pip install playwright` dan `playwright install chromium`. Alur tombol Lanjut belum diuji lewat klik, hanya lewat fungsi
+- Kedua berkas ini tidak dibutuhkan untuk memakai aplikasi dan tidak perlu diunggah ke hosting
 
-Soal ada di bagian `D` pada file HTML dan semuanya pilihan ganda dengan 4 opsi (a sampai d). Soal dasar ada di `D.<mapel>.q`: `[gambar, pertanyaan, [benar, pengecoh, pengecoh], catatan]`; pengecoh ke-4 ada di `EX`. Soal tambahan ada di `D.<mapel>.x` memakai fungsi `P(bab, gambar, pertanyaan, [benar, pengecoh1, pengecoh2, pengecoh3], catatan)`. Jawaban benar selalu ditulis pertama; urutan opsi diacak otomatis saat soal tampil. Nomor bab mulai dari 0, nama bab ada di `D.<mapel>.bab`.
+## Menambah soal
+Soal Penjumlahan dan Pengurangan juga dibuat otomatis oleh fungsi `gen(bab, jumlah)` di index.html; ubah batas angkanya di fungsi itu.
+
+Soal ada di berkas `soal.js` (objek `D`) dan semuanya pilihan ganda dengan 4 opsi (a sampai d). Soal dasar ada di `D.<mapel>.q`: `[gambar, pertanyaan, [benar, pengecoh, pengecoh], catatan]`; pengecoh ke-4 ada di `EX`. Soal tambahan ada di `D.<mapel>.x` memakai fungsi `P(bab, gambar, pertanyaan, [benar, pengecoh1, pengecoh2, pengecoh3], catatan)`. Jawaban benar selalu ditulis pertama; urutan opsi diacak otomatis saat soal tampil. Nomor bab mulai dari 0, nama bab ada di `D.<mapel>.bab`.
 
 ## Roadmap
 - [x] Fase 1: MVP, skor bintang, suara pembaca soal, mode pendamping
@@ -27,7 +32,7 @@ Soal ada di bagian `D` pada file HTML dan semuanya pilihan ganda dengan 4 opsi (
 - [x] Fase 3: layar pendamping dengan PIN opsional (atur jumlah soal, batas waktu, suara; kunci jawaban; ringkasan soal yang perlu didampingi)
 - [x] Fase 4: profil anak, riwayat nilai, lencana, grafik, latihan ulang soal sulit, cetak PDF
 - [x] Fase 5: PWA (bisa dipasang dan offline), cadangan data
-- [x] Fase 6-16: lihat ROADMAP.md
+- [x] Fase 6-27: lihat ROADMAP.md
 - [ ] Uji coba dengan 1 anak, yaitu anak pengguna sendiri (dilakukan pengguna)
 
 ## Layar pendamping
@@ -44,8 +49,30 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 Ketuk tombol **?** di menu utama (sebelah "Pendamping") atau di layar pilih nama anak untuk melihat versi aplikasi dan daftar perubahan terakhir. Daftar ini ada di variabel `CHG` pada index.html; tambahkan entri baru di bagian paling atas setiap rilis dan ubah `VER`.
 
 ## Changelog
+
+### v0.35
+- Versi satu file: `latihan-ulangan-satu-file.html` berisi index.html, soal.js, dan keempat font (tertanam base64), sekitar 260 KB. Dibuat oleh `node buat-satu-file.js`; ulangi perintah itu setiap selesai mengubah index.html, soal.js, atau font. Sudah diuji sendirian di folder kosong tanpa berkas lain: font termuat dan semua uji alur lolos. Tidak memakai service worker, jadi tidak bisa dipasang sebagai PWA
+- Bank soal dipindah dari index.html ke `soal.js` (objek `D`, fungsi `P` dan `B`, pengecoh ke-4 `EX`); isinya identik dengan v0.34 (148 soal, diperiksa otomatis). index.html memuatnya lewat `<script src="soal.js">` sebelum kode aplikasi
+- `soal.js` masuk daftar cache offline di `sw.js` (ulangan-v0.35). Saat mengunggah ke hosting, `soal.js` harus ikut diunggah bersama index.html
+- `periksa-soal.js` kini membaca `soal.js`
+
+### v0.34
+- Font Baloo 2 disertakan di folder `fonts` (Regular 400, Medium 500, Bold 700, ExtraBold 800; subset huruf Latin, format WOFF, sekitar 140 KB total) dengan lisensi OFL (`fonts/OFL.txt`)
+- `@font-face` "Baloo 2 Lokal" kini memakai empat berkas `baloo2-<tebal>.woff`; tautan Google Fonts dihapus, jadi aplikasi tidak lagi meminta apa pun ke internet saat dibuka
+- Keempat berkas font masuk daftar cache offline di `sw.js` (ulangan-v0.34), sehingga tersimpan sejak pembukaan pertama
+- `unduh-font.sh` dan `fonts/PETUNJUK.txt` dihapus karena tidak dibutuhkan lagi; diganti `fonts/CATATAN.txt`
+- `uji/uji-alur.py` ditambah dua pemeriksaan: font terpasang dan tidak ada permintaan ke internet
+
+### Perkakas pengembang (tanpa perubahan aplikasi, Fase 28)
+- Ditambah `periksa-soal.js` dan `uji/uji-alur.py` (lihat bagian Pemeriksaan dan uji otomatis). Pemeriksa menemukan 0 masalah pada 148 soal; kunci soal kembar memperhitungkan gambar, sebab soal tanda baca yang sama dengan kalimat berbeda sah
+
+### v0.33
+- Soal baru di Matematika, bab Bilangan dan bentuk: menghitung benda bergambar (1 sampai 10 benda, 10 jenis gambar). Dibuat otomatis oleh `genHitung(jumlah)`, 8 soal per latihan bab ini (4 di Campuran); tidak masuk kunci jawaban dan catatan soal sulit. Daftar gambar ada di `BENDA`
+- Pengulangan berjarak ringan: di latihan biasa (per bab maupun Campuran), sekitar 30 persen soal diambil dari soal yang sering salah (fungsi `prioritas`), sisanya acak seperti biasa. Soal yang sudah dijawab benar berulang kali turun dari daftar itu
+- Gambar hitung punya label khusus untuk pembaca layar (`al`), mis. "Gambar soal: 5 apel"
+- Versi cache offline dinaikkan ke ulangan-v0.33
 ### v0.32
-- Dukungan font di dalam aplikasi: `@font-face` "Baloo 2 Lokal" membaca `fonts/baloo2.woff2` atau `fonts/baloo2.ttf`; berkas font belum disertakan (lihat `fonts/PETUNJUK.txt` dan `unduh-font.sh`)
+- Dukungan font di dalam aplikasi: `@font-face` "Baloo 2 Lokal" membaca `fonts/baloo2.woff2` atau `fonts/baloo2.ttf`; berkas font disertakan mulai v0.34
 - Tanpa berkas font, tampilan sama seperti sebelumnya (font Google saat online, font sistem saat offline); font dari folder tersimpan otomatis di cache offline setelah dibuka sekali saat online
 - Versi cache offline dinaikkan ke ulangan-v0.32
 

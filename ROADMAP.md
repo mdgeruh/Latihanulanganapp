@@ -1,6 +1,6 @@
 # Roadmap: Latihan Ulangan Kelas 1 SD
 
-Status per v0.32. Tanda [x] selesai, [ ] belum.
+Status per v0.35. Tanda [x] selesai, [ ] belum.
 
 ## Selesai
 - [x] Fase 1 (v0.1): MVP, skor bintang, suara pembaca soal, mode pendamping
@@ -29,6 +29,11 @@ Status per v0.32. Tanda [x] selesai, [ ] belum.
 - [x] Fase 24 (v0.30): ID soal tetap berdasarkan isi
 - [x] Fase 25 (v0.31): ukuran huruf, kontras mode gelap dan terang, label pembaca layar
 - [x] Fase 26 (v0.32): dukungan font lokal (berkas font perlu dipasang pengguna)
+- [x] Fase 27 (v0.33): soal menghitung benda bergambar (otomatis) dan pengulangan berjarak ringan untuk soal yang sering salah
+- [x] Fase 28 (v0.33, tanpa perubahan aplikasi): skrip pemeriksa soal `periksa-soal.js` dan uji alur utama `uji/uji-alur.py`
+- [x] Fase 29 (v0.34): font Baloo 2 lokal disertakan (offline, tanpa Google Fonts)
+- [x] Fase 30 (v0.35): bank soal dipisah ke soal.js
+- [x] Fase 31 (v0.35, tanpa perubahan aplikasi): versi satu file (soal dan font tertanam) agar bisa dibuka langsung dari penyimpanan HP
 
 ## Berikutnya: uji coba (dilakukan pengguna)
 - [ ] Uji dengan 1 anak (anak sendiri) memakai daftar uji coba di README.md
@@ -46,10 +51,10 @@ Urutan prioritas: Tinggi dikerjakan dulu, tetapi tetap sesuaikan dengan hasil uj
 - [x] Rapikan dokumen: README (bagian Roadmap berhenti di Fase 5) dan SUMMARY (masih v0.16) disamakan dengan versi terbaru
 
 ### Sedang (belajar dan motivasi anak)
-- [x] Soal berulang: bank 17 per bab cepat habis. Matematika dibuat otomatis (Penjumlahan dan Pengurangan selesai; Bilangan dan bentuk belum) (penjumlahan dan pengurangan angka acak dalam batas materi kelas 1) agar tidak pernah sama
-- [ ] Prioritaskan soal yang sering salah di latihan biasa (pengulangan berjarak ringan), bukan hanya lewat tombol latihan ulang
+- [x] Soal berulang: bank 17 per bab cepat habis. Matematika dibuat otomatis (Penjumlahan, Pengurangan, dan menghitung benda di Bilangan dan bentuk selesai) (penjumlahan dan pengurangan angka acak dalam batas materi kelas 1) agar tidak pernah sama
+- [x] Prioritaskan soal yang sering salah di latihan biasa (pengulangan berjarak ringan), bukan hanya lewat tombol latihan ulang
 - [x] Soal membaca: bacaan 2-3 kalimat lalu pertanyaan (Bahasa Indonesia, 12 soal)
-- [ ] Soal bergambar menghitung benda
+- [x] Soal bergambar menghitung benda
 - [x] Penguat semangat: target harian, rangkaian hari berlatih, stiker
 - [x] Efek suara pendek (ada opsi matikan)
 - [x] Suara bacaan: cek ketersediaan suara id-ID (`getVoices`) dan beri pesan jelas jika perangkat tidak punya, sebab sekarang tombol baca bisa diam tanpa penjelasan
@@ -60,10 +65,10 @@ Urutan prioritas: Tinggi dikerjakan dulu, tetapi tetap sesuaikan dengan hasil uj
 - [x] Beri ID tetap pada soal agar catatan soal sulit tidak rusak saat isi soal diubah (kasus lama setelah v0.8)
 
 ### Rendah (teknis dan aksesibilitas)
-- [ ] Pisahkan bank soal dari index.html (misalnya soal.js) agar mudah diedit; tambahkan skrip pemeriksa soal (4 opsi, tidak ada opsi kembar, jawaban benar ada)
-- [ ] Pasang berkas font Baloo 2 di folder fonts (kode sudah siap; jalankan unduh-font.sh atau ikuti fonts/PETUNJUK.txt)
+- [x] Pisahkan bank soal dari index.html ke soal.js dan skrip pemeriksa soal (selesai v0.35)
+- [x] Pasang berkas font Baloo 2 di folder fonts (selesai v0.34)
 - [x] Aksesibilitas: label ARIA, opsi ukuran huruf, kontras diperiksa (mode gelap dan terang)
-- [ ] Uji otomatis ringan untuk alur utama (mulai latihan, jawab, lewati, hasil)
+- [x] Uji otomatis ringan untuk alur utama (mulai latihan, jawab, lewati, hasil)
 
 ## Usulan lama (belum diputuskan, tergantung hasil uji coba)
 - [ ] Menambah bank soal lagi bila 17 soal per bab masih cepat berulang
