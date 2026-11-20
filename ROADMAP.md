@@ -1,6 +1,6 @@
 # Roadmap: Latihan Ulangan Kelas 1 SD
 
-Status per v0.35. Tanda [x] selesai, [ ] belum.
+Status per v0.45. Tanda [x] selesai, [ ] belum.
 
 ## Selesai
 - [x] Fase 1 (v0.1): MVP, skor bintang, suara pembaca soal, mode pendamping
@@ -34,6 +34,17 @@ Status per v0.35. Tanda [x] selesai, [ ] belum.
 - [x] Fase 29 (v0.34): font Baloo 2 lokal disertakan (offline, tanpa Google Fonts)
 - [x] Fase 30 (v0.35): bank soal dipisah ke soal.js
 - [x] Fase 31 (v0.35, tanpa perubahan aplikasi): versi satu file (soal dan font tertanam) agar bisa dibuka langsung dari penyimpanan HP
+- [x] Fase 32 (v0.36): tombol 🚩 Tandai soal (tidak sesuai materi / terlalu sulit), daftar di Layar pendamping, bisa dibagikan sebagai teks
+- [x] Fase 33 (v0.36): soal sendiri di Layar pendamping (tambah, ubah, hapus), ikut latihan dan cadangan
+- [x] Fase 34 (v0.37): Mode Ulangan (10 soal campuran, tanpa umpan balik per soal, nilai di akhir)
+- [x] Fase 35 (v0.38): Mode Ulangan per mata pelajaran (pilih Matematika, Bahasa Indonesia, Pancasila, atau Campuran)
+- [x] Fase 36 (v0.39): teman belajar, karakter anak SD Indonesia dengan 9 gaya (menu, pilih nama, umpan balik, hasil; bisa dipilih atau dimatikan)
+- [x] Fase 37 (v0.40): karakter teman belajar di setiap soal
+- [x] Fase 38 (v0.41): soal otomatis Bilangan dan bentuk (sebelum/sesudah, besar/kecil, mengenal bentuk)
+- [x] Fase 39 (v0.42): soal otomatis Bahasa Indonesia (huruf awal, suku kata hilang, kata sesuai gambar)
+- [x] Fase 40 (v0.43): pengecoh Penjumlahan dan Pengurangan dari kesalahan umum anak, Pola kesalahan hitung di Layar pendamping
+- [x] Fase 41 (v0.44): grafik Perkembangan per bab di Layar pendamping
+- [x] Fase 42 (v0.45): cadangan otomatis ke berkas tiap 5 atau 10 latihan (opsional)
 
 ## Berikutnya: uji coba (dilakukan pengguna)
 - [ ] Uji dengan 1 anak (anak sendiri) memakai daftar uji coba di README.md
@@ -41,7 +52,33 @@ Status per v0.35. Tanda [x] selesai, [ ] belum.
 - [ ] Catat bagian yang terasa membosankan atau sulit bagi anak
 - [ ] Periksa apakah pilihan a sampai d dan suara bacaan mudah dipahami
 
-## Saran improvement (v0.21, belum diputuskan)
+## Usulan berikutnya: unggah soal dari berkas (rencana v0.46)
+Pendamping bisa memasukkan banyak soal sekaligus dari berkas CSV (dari Excel atau Google Sheets), tanpa menulis satu per satu. Memakai jalur soal sendiri yang sudah ada (`DB.sd`), jadi soal langsung ikut latihan, Campuran, Mode Ulangan, kunci jawaban, dan cadangan.
+- [ ] Templat CSV yang bisa diunduh dari Layar pendamping. Kolom: pelajaran, bab, gambar (boleh kosong), pertanyaan, jawaban benar, pengecoh 1-3, catatan pendamping; pelajaran dan bab ditulis dengan namanya
+- [ ] Baca berkas CSV (dengan tanda kutip dan baris baru dalam sel) dan periksa tiap baris dengan aturan yang sama seperti formulir soal sendiri: pertanyaan terisi, empat pilihan terisi dan berbeda, pelajaran dan bab dikenali, batas panjang teks, soal kembar dilewati
+- [ ] Layar pratinjau sebelum menyimpan: ringkasan jumlah soal valid dan ditolak beserta alasan per baris (contoh: "baris 9: bab tidak ada"); soal baru tersimpan hanya setelah tombol Simpan
+- [ ] Simpan soal valid ke `DB.sd` (teks tetap di-escape saat tampil), batas sekitar 200 soal per unggahan karena penyimpanan browser terbatas
+- [ ] Tetap offline dan hanya di Layar pendamping (bisa dikunci PIN); soal bawaan di `soal.js` tidak berubah, mengganti soal bawaan tetap lewat tanda 🚩 dan soal pengganti
+- [ ] Tambahkan ke skrip uji (`uji/uji-alur.py`) dan README (cara mengisi templat)
+
+## Saran improvement (v0.36, Tinggi sudah selesai)
+Disusun setelah semua saran v0.21 selesai. Prioritas Tinggi mendukung uji coba dengan anak; tetap sesuaikan dengan hasil uji coba.
+
+### Tinggi (mendukung uji coba)
+- [x] Tandai soal bermasalah: tombol kecil untuk orang tua di layar soal ("tidak sesuai materi" atau "terlalu sulit"); daftarnya tampil di Layar pendamping dan bisa dibagikan sebagai teks
+- [x] Tambah atau ubah soal dari Layar pendamping (v0.36: soal sendiri; soal bawaan diganti dengan menandainya lalu menulis soal pengganti): soal sendiri sesuai buku guru, tersimpan di browser dan ikut cadangan (tanpa membuka kode)
+
+### Sedang (belajar dan motivasi)
+- [x] Mode Ulangan (v0.37): 10 soal campuran tanpa umpan balik per soal, nilai di akhir
+- [x] (v0.43) Pengecoh dari kesalahan umum anak (mis. Pengurangan: hasil penjumlahan atau angka tertukar) agar catatan soal sulit menunjukkan letak kesalahan
+- [x] (v0.41) Soal otomatis lain untuk Bilangan dan bentuk: bilangan sebelum atau sesudah, lebih banyak atau lebih sedikit, mengenal bentuk (lingkaran, persegi, segitiga) dengan gambar
+- [x] (v0.42) Soal Bahasa Indonesia otomatis: huruf awal, melengkapi suku kata yang hilang, memilih kata sesuai gambar
+
+### Rendah
+- [x] (v0.44) Grafik perkembangan per bab untuk orang tua di Layar pendamping
+- [x] (v0.45) Cadangan otomatis ke berkas setiap beberapa latihan (opsional)
+
+## Saran improvement (v0.21, semua selesai kecuali yang tercatat di bawah)
 Urutan prioritas: Tinggi dikerjakan dulu, tetapi tetap sesuaikan dengan hasil uji coba.
 
 ### Tinggi (data dan keandalan)

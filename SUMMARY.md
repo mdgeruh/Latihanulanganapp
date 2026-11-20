@@ -1,11 +1,11 @@
-# Ringkasan Proyek: Latihan Ulangan Kelas 1 SD (v0.35)
+# Ringkasan Proyek: Latihan Ulangan Kelas 1 SD (v0.45)
 
 ## Tujuan
 Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata pelajaran: Matematika, Bahasa Indonesia, dan Pendidikan Pancasila.
 
 ## Status
-- Versi aplikasi: v0.35
-- Fase 1 sampai 31 selesai; uji coba dengan 1 anak (anak pengguna sendiri) belum dilakukan
+- Versi aplikasi: v0.45
+- Fase 1 sampai 42 selesai; uji coba dengan 1 anak (anak pengguna sendiri) belum dilakukan
 - Semua soal pilihan ganda 4 opsi (a sampai d), total 148 soal tetap, ditambah soal otomatis
 
 ## Bank soal
@@ -16,8 +16,16 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 | Pendidikan Pancasila | Lambang Pancasila (17); Sikap sesuai sila (17) | 34 |
 
 ## Fitur
+- Mode Ulangan per pelajaran (Matematika, Bahasa Indonesia, Pancasila, atau Campuran): 10 soal tanpa benar/salah per soal, nilai dan soal salah di akhir; riwayat jenis `uji` dengan bidang `m` (pelajaran), tampil di Progres dan Ringkasan 7 hari; soal bertanda "tidak sesuai materi" tidak ikut
+- Teman belajar: karakter anak SD Indonesia (Budi, Sari, Aisyah, Rangga) dengan 9 gaya, digambar SVG di `index.html` (`KT`, `KP`, `kar()`); tampil di menu, pilih nama, setiap soal, umpan balik jawaban, dan hasil; bisa dipilih atau dimatikan di Layar pendamping (`DB.cfg.tk`)
+- Tombol 🚩 Tandai soal di layar soal (tidak sesuai materi / terlalu sulit); daftar dan tombol Bagikan daftar ada di Layar pendamping; tidak berlaku untuk soal otomatis
+- Soal sendiri: tambah, ubah, hapus soal pilihan ganda dari Layar pendamping; ikut latihan, campuran, kunci jawaban, catatan soal sulit, dan cadangan
 - Soal Penjumlahan dan Pengurangan ditambah soal otomatis (angka acak sampai 20) lewat `gen()`; tidak masuk kunci jawaban dan catatan soal sulit
 - Soal Bilangan dan bentuk ditambah soal menghitung benda bergambar otomatis (1 sampai 10) lewat `genHitung()`; tidak masuk kunci jawaban dan catatan soal sulit
+- Soal Bilangan dan bentuk juga ditambah soal otomatis `genBentuk()`: bilangan sebelum/sesudah, paling besar/kecil, mengenal bentuk bergambar; tidak masuk kunci jawaban dan catatan soal sulit
+- Soal Bahasa Indonesia ditambah soal otomatis `genKata()`: huruf awal kata bergambar, melengkapi suku kata, memilih kata sesuai gambar (bab Huruf dan suku kata, Mengenal kata); tidak masuk kunci jawaban dan catatan soal sulit
+- Pengecoh soal Penjumlahan dan Pengurangan otomatis meniru kesalahan umum anak (`pengecoh()`); jenis kesalahan dicatat di `p.kk` dan tampil sebagai Pola kesalahan hitung di Layar pendamping
+- Layar pendamping menampilkan Perkembangan per bab (`grafikBab()`): batang mini 8 latihan terakhir, rata-rata, dan tren
 - Pengulangan berjarak ringan: sekitar 30 persen soal latihan biasa diambil dari soal yang sering salah (`prioritas()`)
 - Target latihan harian, hari berturut-turut, dan stiker koleksi (satu per hari saat target tercapai)
 - Efek suara pendek (nada buatan lewat Web Audio) yang bisa dimatikan di Layar pendamping
@@ -26,13 +34,13 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 - Pilih pelajaran dan bab, atau "Campuran" (soal acak dari semua bab)
 - Opsi jawaban diacak, jawaban benar tampil beserta hurufnya
 - Suara pembaca soal (menyebut huruf opsi), bisa otomatis
-- Skor bintang (nilai per 10), riwayat nilai per bab, grafik, 5 lencana, cetak PDF
+- Skor bintang (nilai per 10), riwayat nilai per bab, grafik, 6 lencana, cetak PDF
 - Profil lebih dari satu anak, latihan ulang soal yang sering salah
 - Navigasi: tombol Menu dan Bab di layar soal dengan konfirmasi keluar, titik progres per soal, tombol Pilih bab lain di hasil, pintasan keyboard a-d
 - Lewati soal: tombol Lewati dulu memindahkan soal ke antrean akhir, lalu dikerjakan setelah soal terakhir
 - Layar pendamping: jumlah soal (5/10/15/20/semua), batas waktu, kecepatan suara, catatan pendamping, kunci jawaban, daftar soal yang perlu didampingi, PIN 4 angka opsional
 - Tombol ? di menu dan layar pilih anak: menampilkan versi aplikasi dan perubahan terakhir
-- Cadangan dan pemulihan data (JSON)
+- Cadangan dan pemulihan data (JSON); cadangan otomatis ke berkas tiap 5 atau 10 latihan (opsional, `cadOto()`)
 - PWA: bisa dipasang dan jalan offline setelah dibuka sekali lewat HTTPS
 
 ## Struktur berkas
@@ -42,7 +50,7 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 | latihan-ulangan-satu-file.html | Versi satu berkas (aplikasi, soal, font tertanam) untuk dibuka langsung di HP; hasil `node buat-satu-file.js` |
 | buat-satu-file.js | Pembuat versi satu berkas, hanya untuk pengembang |
 | soal.js | Bank soal (objek `D`), dimuat index.html |
-| sw.js | Service worker, cache offline (ulangan-v0.35) |
+| sw.js | Service worker, cache offline (ulangan-v0.45) |
 | manifest.webmanifest | Data PWA |
 | fonts/ | Font Baloo 2 lokal (baloo2-400/500/700/800.woff), lisensi OFL.txt, CATATAN.txt |
 | icons/ | Ikon 192, 512, dan maskable 512 |
@@ -55,6 +63,7 @@ Webapp latihan ulangan untuk anak kelas 1 SD, dikerjakan bersama orang tua. Mata
 ## Data dan penyimpanan
 - Soal ada di objek `D` pada soal.js: soal dasar di `D.<mapel>.q`, soal tambahan di `D.<mapel>.x` (fungsi `P`)
 - Data anak, nilai, pengaturan, dan PIN disimpan di localStorage browser (kunci `ulangan_db`), tanpa server
+- Soal sendiri di `DB.sd` (id, k, b, t, v, o[4], e, w) dan tanda soal di `DB.fl` (kunci = ID soal; r, t, k, b, s, j); keduanya ikut cadangan dan digabung saat pulihkan (`mergeExtra`). ID soal sendiri berawalan `sd:`; teks di-escape saat tampil di `buat()`
 - Pindah perangkat lewat "Simpan cadangan" dan "Pulihkan cadangan"
 
 ## Catatan teknis

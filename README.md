@@ -1,4 +1,4 @@
-# Latihan Ulangan Kelas 1 SD (v0.35)
+# Latihan Ulangan Kelas 1 SD (v0.45)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
@@ -13,12 +13,12 @@ Data tersimpan di browser perangkat. Untuk memindahkan data ke perangkat lain, p
 - Anak bisa memilih pelajaran dan bab tanpa dibantu?
 - Tombol dan teks cukup besar, suara bacaan jelas?
 - Pilihan a sampai d mudah dibaca dan dipahami anak?
-- Soal sesuai materi yang sudah diajarkan guru? Catat yang perlu diganti.
+- Soal sesuai materi yang sudah diajarkan guru? Ketuk 🚩 Tandai soal di layar soal, lalu lihat daftarnya di Layar pendamping.
 - Apakah anak mau mengulang? Catat bagian yang membosankan atau sulit.
 
 ## Pemeriksaan dan uji otomatis (untuk pengembang)
 - `node periksa-soal.js`: memeriksa seluruh bank soal di soal.js (4 opsi, tidak ada opsi kembar atau kosong, nomor bab sah, catatan pendamping terisi, tidak ada soal kembar). Jalankan setiap selesai menambah atau mengubah soal. Keluar dengan kode 1 jika ada masalah
-- `python3 uji/uji-alur.py [berkas.html]`: uji alur utama di browser (tambah anak, mulai latihan, lewati, jawab, hasil, riwayat, soal sulit diprioritaskan, soal hitung benda). Perlu `pip install playwright` dan `playwright install chromium`. Alur tombol Lanjut belum diuji lewat klik, hanya lewat fungsi
+- `python3 uji/uji-alur.py [berkas.html]`: uji alur utama di browser (tambah anak, mulai latihan, lewati, jawab, hasil, riwayat, soal sulit diprioritaskan, soal hitung benda, tandai soal, soal sendiri, Mode Ulangan). Perlu `pip install playwright` dan `playwright install chromium`. Alur tombol Lanjut belum diuji lewat klik, hanya lewat fungsi
 - Kedua berkas ini tidak dibutuhkan untuk memakai aplikasi dan tidak perlu diunggah ke hosting
 
 ## Menambah soal
@@ -38,6 +38,38 @@ Soal ada di berkas `soal.js` (objek `D`) dan semuanya pilihan ganda dengan 4 ops
 ## Layar pendamping
 Dari menu utama, ketuk "Layar pendamping" untuk mengatur jumlah soal (5/10/15/20/semua), batas waktu (tanpa/5/10 menit), kecepatan suara, dan baca soal otomatis. Di layar yang sama ada daftar soal yang paling sering salah dan kunci jawaban semua soal. Pengaturan tersimpan di browser.
 
+## Teman belajar (v0.39)
+Karakter anak SD Indonesia berseragam merah putih, digambar dengan SVG di dalam `index.html` (tanpa berkas gambar, jalan offline, ikut mode gelap dan terang).
+- Tokoh (`KT`): Budi, Sari (kuncir dua), Aisyah (berjilbab), Rangga (berkacamata)
+- Gaya/pose (`KP`): melambai, melompat gembira, jempol, angkat tangan, bersemangat, berpikir, membaca buku, hormat, memegang bintang
+- Tampil di: menu (ketuk karakter untuk ganti gaya), layar pilih nama, umpan balik setelah menjawab (benar: gembira/jempol/angkat tangan/bintang, salah: bersemangat), dan hasil latihan (sesuai nilai)
+- Pengaturan: Layar pendamping, **Teman belajar** (Acak, salah satu tokoh, atau Tanpa)
+- Menambah gaya: tambahkan satu baris di `KP` (posisi siku dan tangan, wajah, benda) lalu nama gaya di `PO`; menambah tokoh: satu baris di `KT`
+- Fungsi: `kar(tokoh, gaya, lebar, potong)` mengembalikan SVG; `potong` = hanya tubuh bagian atas
+
+## Mode Ulangan (v0.37, per pelajaran sejak v0.38)
+Di menu utama, ketuk **📝 Mode Ulangan**, lalu pilih **Matematika**, **Bahasa Indonesia**, **Pendidikan Pancasila**, atau **Campuran** (ketiganya, dibagi rata). Tiap kartu menampilkan nilai terbaik ulangan pelajaran itu. Isinya 10 soal acak dari seluruh bab pelajaran yang dipilih (Matematika termasuk soal otomatis). Cara kerjanya seperti ulangan sungguhan:
+- Setelah memilih jawaban, pilihan hanya tersorot (tidak ada tanda benar/salah, tidak ada efek suara benar/salah). Pilihan boleh diganti sebelum mengetuk **Lanjut**.
+- Titik progres hanya menandai soal yang sudah dijawab, tanpa warna benar/salah. **Lewati dulu** tetap ada.
+- Nilai dan daftar soal yang salah (dengan jawaban benar dan catatan) baru tampil di akhir, tanpa perlu mengaktifkan catatan pendamping.
+- Jumlah soal selalu 10 (tidak mengikuti pengaturan jumlah soal). Batas waktu mengikuti pengaturan; bila waktu habis, jawaban yang sudah dipilih tetap dihitung.
+- Soal yang ditandai 🚩 "Tidak sesuai materi" tidak ikut Mode Ulangan.
+- Di layar hasil ada **Ulangi ulangan** (pelajaran yang sama) dan **Pilih pelajaran lain**.
+- Jawaban salah tetap masuk catatan soal sulit. Nilai tersimpan di riwayat (jenis `uji`, dengan bidang `m` berisi pelajaran; riwayat v0.37 tanpa `m` dianggap Campuran) dan tampil di Progres (bagian Mode Ulangan, rata-rata per pelajaran) dan Ringkasan 7 hari. Ada lencana baru **Ikut Mode Ulangan**. Mode Ulangan tidak dihitung sebagai pelajaran untuk lencana "Coba 3 pelajaran".
+
+## Tandai soal bermasalah (v0.36)
+Di layar soal ada tombol kecil **🚩 Tandai soal** (tidak ada pada soal otomatis: penjumlahan, pengurangan, dan hitung benda). Ketuk, lalu pilih **Tidak sesuai materi** atau **Terlalu sulit**. Pilih lagi untuk mengganti alasan, atau **Hapus tanda** untuk membatalkan. Daftar soal ditandai ada di Layar pendamping (bagian "Soal ditandai"): tiap soal punya tombol Hapus tanda, dan tombol **Bagikan daftar** mengirim atau menyalin daftar sebagai teks (mis. untuk dikirim ke pengembang). Soal yang ditandai tetap muncul di latihan; tanda hanya catatan.
+
+## Soal sendiri (v0.36)
+Di Layar pendamping, ketuk **Kelola soal sendiri** untuk menulis soal sesuai buku guru tanpa membuka kode:
+- Pilih pelajaran dan bab, tulis pertanyaan, jawaban benar, dan 3 pengecoh (keempatnya harus berbeda). Gambar emoji dan catatan pendamping boleh kosong; bila kosong, catatan otomatis berbunyi "Jawaban yang benar adalah ...".
+- **Simpan dan tambah lagi** memudahkan memasukkan banyak soal berurutan dengan pelajaran dan bab yang sama.
+- Soal sendiri bisa diubah atau dihapus (hapus perlu ketukan kedua). Urutan pilihan diacak otomatis saat tampil, seperti soal bawaan.
+- Soal sendiri ikut muncul di latihan, soal campuran, kunci jawaban, dan catatan soal sulit. Teks ditampilkan apa adanya (tanda < > & aman).
+- Disimpan di browser (`ulangan_db`, kunci `sd`) dan ikut **Simpan cadangan**. **Pulihkan cadangan** menggabungkan soal sendiri dan tanda: soal dengan ID sama yang lebih baru menimpa, soal yang sudah dihapus di perangkat ini bisa muncul lagi bila ada di cadangan.
+- Soal sendiri tidak diperiksa oleh `periksa-soal.js` (itu hanya untuk soal.js); formulir sudah memeriksa pertanyaan terisi, 4 pilihan terisi dan berbeda, serta soal kembar.
+- Soal bawaan di soal.js tidak bisa diubah dari aplikasi; bila ada soal bawaan yang tidak cocok, tandai dengan 🚩 lalu tulis soal pengganti sendiri.
+
 ## PIN Layar pendamping
 Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika aktif, layar itu (kunci jawaban, pengaturan, dan tombol catatan pendamping) tidak bisa dibuka tanpa PIN. PIN ini hanya pengaman sederhana untuk anak, bukan keamanan data. Jika lupa PIN, satu-satunya cara adalah menghapus data situs di pengaturan browser (nilai ikut terhapus), jadi simpan cadangan data dulu.
 
@@ -49,6 +81,57 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 Ketuk tombol **?** di menu utama (sebelah "Pendamping") atau di layar pilih nama anak untuk melihat versi aplikasi dan daftar perubahan terakhir. Daftar ini ada di variabel `CHG` pada index.html; tambahkan entri baru di bagian paling atas setiap rilis dan ubah `VER`.
 
 ## Changelog
+
+### v0.45
+- **Cadangan otomatis ke berkas** lewat `cadOto()`: pengaturan di Layar pendamping (`DB.cfg.cao`: 0 mati, 5 atau 10 latihan); setiap layar hasil menambah hitungan (`DB.cfg.cac`), dan saat tercapai berkas `cadangan-latihan-ulangan-TANGGAL.json` diunduh otomatis. Bergantung pada browser: bila unduhan otomatis diblokir, muncul pesan dan cadangan manual tetap bisa dipakai
+- `sw.js`: cache `ulangan-v0.45`
+
+### v0.44
+- **Perkembangan per bab** di Layar pendamping lewat `grafikBab()`: batang mini nilai 8 latihan terakhir tiap bab yang sudah dicoba, rata-rata, jumlah latihan, dan tanda ▲ ▼ = (3 nilai terakhir dibanding 3 sebelumnya, perlu minimal 4 latihan)
+- `sw.js`: cache `ulangan-v0.44`
+
+### v0.43
+- **Pengecoh dari kesalahan umum anak** (soal otomatis Penjumlahan dan Pengurangan) lewat `pengecoh()`: operasi tertukar, memilih salah satu angka soal, selisih satu, selisih sepuluh, angka puluhan-satuan tertukar. Tiap pengecoh diberi jenis (`q.h`)
+- Jenis kesalahan dicatat per anak (`p.kk`, ikut cadangan) dan tampil di Layar pendamping sebagai **Pola kesalahan hitung**; dengan Catatan pendamping aktif, jawaban salah diberi petunjuk jenis kesalahannya
+- `sw.js`: cache `ulangan-v0.43`
+
+### v0.42
+- **Soal otomatis Bahasa Indonesia** lewat `genKata()` (daftar `KATA`: gambar dan suku kata): huruf awal kata bergambar, melengkapi suku kata yang hilang (bab Huruf dan suku kata), dan memilih kata yang cocok dengan gambar (bab Mengenal kata); ikut di Campuran Bahasa Indonesia dan Mode Ulangan; tidak masuk kunci jawaban dan catatan soal sulit. Menambah kata: satu baris di `KATA`
+- `sw.js`: cache `ulangan-v0.42`
+
+### v0.41
+- **Soal otomatis Bilangan dan bentuk** lewat `genBentuk()`: bilangan sebelum/sesudah (1-10), bilangan paling besar/kecil (1-20), dan mengenal bentuk bergambar (lingkaran, persegi, segitiga); ikut di bab Bilangan dan bentuk, Campuran Matematika, dan Mode Ulangan; tidak masuk kunci jawaban dan catatan soal sulit
+- `sw.js`: cache `ulangan-v0.41`
+
+### v0.40
+- **Karakter di setiap soal**: `qkTk()` menampilkan teman belajar (gaya berganti per soal) di atas gambar soal, juga di Mode Ulangan; mengikuti pilihan Teman belajar
+- `sw.js`: cache `ulangan-v0.40`
+
+### v0.39
+- **Teman belajar**: 4 karakter anak SD Indonesia dengan 9 gaya (lihat bagian Teman belajar); tampil di menu, layar pilih nama, umpan balik jawaban, dan hasil; pilihan di Layar pendamping (`DB.cfg.tk`, -1 acak, 0-3 tokoh, 9 tanpa)
+- `sw.js`: cache `ulangan-v0.39`. Bank soal tidak berubah (148 soal)
+
+### v0.38
+- **Mode Ulangan per mata pelajaran**: ketuk Mode Ulangan di menu, lalu pilih Matematika, Bahasa Indonesia, Pendidikan Pancasila, atau Campuran. Layar pilihan baru `pilihUj()` dengan nilai terbaik per kartu; `mulaiUj(m)` menerima kode pelajaran (kosong = campuran)
+- Layar hasil: nama pelajaran di judul dan warna pelajaran, **Ulangi ulangan** tetap di pelajaran yang sama, tombol baru **Pilih pelajaran lain**
+- Riwayat ulangan menyimpan bidang `m` (pelajaran); Progres menampilkan rata-rata ulangan per pelajaran
+- `sw.js`: cache `ulangan-v0.38`. Bank soal bawaan tidak berubah (148 soal)
+- `uji/uji-alur.py`: uji baru untuk pilihan pelajaran, 10 soal berbeda dari tiap pelajaran, hasil dan riwayat per pelajaran, ulangi, nilai terbaik di kartu, Progres per pelajaran. Semua uji lolos pada index.html dan versi satu file
+
+### v0.37
+- **Mode Ulangan** di menu: 10 soal campuran dari semua pelajaran tanpa umpan balik benar/salah per soal; pilihan tersorot dan bisa diganti sebelum Lanjut; nilai dan soal yang salah tampil di akhir. Fungsi baru `mulaiUj()` dan `ujCatat()`; riwayat memakai jenis `uji` (tidak dihitung sebagai pelajaran di lencana)
+- Soal yang ditandai "tidak sesuai materi" tidak ikut Mode Ulangan
+- Nilai Mode Ulangan tampil di Progres dan Ringkasan 7 hari (termasuk teks bagikan); lencana baru "Ikut Mode Ulangan" (total 6 lencana)
+- Waktu habis di Mode Ulangan: jawaban yang sudah dipilih tetap dihitung
+- `sw.js`: cache `ulangan-v0.37`. Bank soal bawaan tidak berubah (148 soal)
+- `uji/uji-alur.py`: tambah uji Mode Ulangan (10 soal, tiga pelajaran, tanpa tanda benar/salah, ganti pilihan, nilai akhir, riwayat, lencana, waktu habis, soal bertanda tidak ikut). Semua uji lolos pada index.html dan versi satu file
+
+### v0.36
+- Tombol 🚩 **Tandai soal** di layar soal: alasan "Tidak sesuai materi" atau "Terlalu sulit". Daftar soal ditandai ada di Layar pendamping, bisa dihapus tandanya satu per satu dan dibagikan sebagai teks. Soal otomatis tidak bisa ditandai. Data di `DB.fl` (ikut cadangan)
+- **Soal sendiri** di Layar pendamping: tambah, ubah, hapus soal pilihan ganda 4 opsi (pelajaran, bab, pertanyaan, jawaban benar, 3 pengecoh, emoji dan catatan opsional), termasuk "Simpan dan tambah lagi". Data di `DB.sd` (ikut cadangan); ikut tampil di latihan, kunci jawaban, dan catatan soal sulit (ID berawalan `sd:`)
+- Pulihkan cadangan kini juga menggabungkan soal sendiri dan tanda (fungsi `mergeExtra`), dengan pemeriksaan bentuk data agar cadangan rusak dilewati
+- `sw.js`: cache `ulangan-v0.36`. Bank soal bawaan (soal.js) tidak berubah (148 soal)
+- `uji/uji-alur.py`: tambah uji tandai soal, soal sendiri (validasi, teks aman, ubah, hapus, gabung cadangan). Semua uji lolos pada index.html dan versi satu file
 
 ### v0.35
 - Versi satu file: `latihan-ulangan-satu-file.html` berisi index.html, soal.js, dan keempat font (tertanam base64), sekitar 260 KB. Dibuat oleh `node buat-satu-file.js`; ulangi perintah itu setiap selesai mengubah index.html, soal.js, atau font. Sudah diuji sendirian di folder kosong tanpa berkas lain: font termuat dan semua uji alur lolos. Tidak memakai service worker, jadi tidak bisa dipasang sebagai PWA
