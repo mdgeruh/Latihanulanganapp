@@ -1,4 +1,4 @@
-const C="ulangan-v0.45",A=["./","index.html","soal.js","manifest.webmanifest","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","fonts/baloo2-400.woff","fonts/baloo2-500.woff","fonts/baloo2-700.woff","fonts/baloo2-800.woff"];
+const C="ulangan-v0.54",A=["./","index.html","soal.js","manifest.webmanifest","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","fonts/baloo2-400.woff","fonts/baloo2-500.woff","fonts/baloo2-700.woff","fonts/baloo2-800.woff"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(n=>{if(n.ok&&new URL(e.request.url).origin===location.origin){const c=n.clone();caches.open(C).then(h=>h.put(e.request,c))}return n}).catch(()=>caches.match("index.html"))))});

@@ -1,4 +1,4 @@
-# Latihan Ulangan Kelas 1 SD (v0.45)
+# Latihan Ulangan Kelas 1 SD (v0.54)
 
 Webapp satu file untuk latihan ulangan Bahasa Indonesia, Matematika, dan Pendidikan Pancasila. Dikerjakan anak bersama orang tua.
 
@@ -81,6 +81,46 @@ Di Layar pendamping, bagian "PIN pendamping" untuk memasang PIN 4 angka. Jika ak
 Ketuk tombol **?** di menu utama (sebelah "Pendamping") atau di layar pilih nama anak untuk melihat versi aplikasi dan daftar perubahan terakhir. Daftar ini ada di variabel `CHG` pada index.html; tambahkan entri baru di bagian paling atas setiap rilis dan ubah `VER`.
 
 ## Changelog
+
+### v0.54
+- **Sorotan kata saat bacaan dibacakan** (bab Membaca kalimat): kata pada teks bacaan dibungkus `span.kw` oleh `kataSorot()`; `baca(t,pj)` memakai peristiwa `boundary` dari `speechSynthesis` untuk menyorot kata yang sedang dibaca lewat `sorotKata()` (`pj` = panjang teks bacaan di awal ucapan). Bergantung pada perangkat: banyak suara jaringan (terutama di Android) tidak mengirim penanda kata, dan dalam kasus itu bacaan tetap berjalan tanpa sorotan. Sorotan hilang saat bacaan selesai, dihentikan, atau jawaban diketuk
+- `sw.js`: cache `ulangan-v0.54`
+
+### v0.53
+- **Unggah soal dari CSV** di Layar pendamping > Kelola soal sendiri: tombol Unggah dari berkas CSV dan Unduh templat CSV. Kolom: pelajaran, bab, gambar, pertanyaan, jawaban benar, pengecoh 1-3, catatan pendamping. Pelajaran dan bab ditulis dengan namanya (bab boleh dengan nomor); pemisah koma, titik koma, atau tab dikenali otomatis; sel bertanda kutip dan baris baru dalam sel didukung; baris judul boleh ada atau tidak
+- Pemeriksaan tiap baris sama dengan formulir soal sendiri (pertanyaan terisi dan maksimal 160 huruf, gambar maksimal 16 karakter, empat pilihan terisi, berbeda, maksimal 60 huruf, catatan maksimal 200 huruf, soal kembar dilewati); batas 200 soal per unggahan
+- Layar pratinjau menampilkan jumlah soal valid, baris ditolak beserta alasannya (misalnya "baris 9: bab tidak ada"), dan 5 contoh soal; soal baru masuk ke `DB.sd` hanya setelah tombol Simpan
+- `sw.js`: cache `ulangan-v0.53`
+
+### v0.52
+- **Soal otomatis Membaca kalimat** lewat `genBaca()`: lima pola bacaan tiga kalimat (perjalanan, hewan peliharaan, buah, kegiatan keluarga, cuaca) dengan nama dan isi yang diacak, tiap bacaan diikuti satu pertanyaan isi; dipakai di bab Membaca kalimat, Campuran Bahasa Indonesia, dan Mode Ulangan; bertanda `g:1` (tidak masuk kunci jawaban dan catatan soal sulit)
+- `sw.js`: cache `ulangan-v0.52`
+
+### v0.51
+- **Soal otomatis Pancasila** lewat `genPan()` (data `LAM`, `BSILA`, `SIKAP`): bab Lambang Pancasila (gambar lambang ke nomor sila, nomor sila ke lambang, nomor sila ke bunyi, bunyi ke nomor sila) dan bab Sikap sesuai sila (15 sikap ke nomor sila); dipakai di latihan per bab, Campuran, dan Mode Ulangan; bertanda `g:1` sehingga tidak masuk kunci jawaban dan catatan soal sulit
+- `sw.js`: cache `ulangan-v0.51`
+
+### v0.50
+- **Nilai 0 sampai 100** di layar hasil: `Math.round(skor/jumlah*100)`, benar semua = 100; tampil besar di atas "X dari N benar". Riwayat, grafik, dan bintang tetap memakai skala per 10
+- `sw.js`: cache `ulangan-v0.50`
+
+### v0.49
+- **Penjelasan saat salah**: `q.e` tampil sebagai catatan 💡 (bila Catatan pendamping mati, agar tidak ganda) dan ditambahkan ke bacaan umpan; pengaturan `DB.cfg.pj` (bawaan Hidup) di Layar pendamping
+- `sw.js`: cache `ulangan-v0.49`
+
+### v0.48
+- **Ulangi bacaan**: tombol `#sayfb` di umpan jawaban membaca ulang hasil benar atau salah (`S.fbt`)
+- **Pengaturan `DB.cfg.bh`** (Bacakan benar/salah setelah menjawab, bawaan Hidup): terpisah dari Baca soal otomatis (`DB.cfg.auto`), jadi umpan v0.47 tidak lagi bergantung pada `auto`
+- **`mulaiUlangSesi()`**: tombol di layar hasil kini hanya mengulang soal yang salah pada latihan tersebut; latihan ulang dari seluruh riwayat tetap lewat `mulaiUlang()` di layar Progres
+- `sw.js`: cache `ulangan-v0.48`
+
+### v0.47
+- **Umpan jawaban dibacakan** di `nilai()`: bila Baca otomatis aktif (`DB.cfg.auto`), hasil benar atau salah (beserta huruf dan isi jawaban yang benar) dibaca setelah pilihan diketuk; tidak berlaku di Mode Ulangan karena tanpa umpan per soal
+- `sw.js`: cache `ulangan-v0.47`
+
+### v0.46
+- **Bacaan soal berhenti saat jawaban diketuk**: `stopBaca()` menaikkan penghitung `BT` (membatalkan bacaan yang masih menunggu giliran) lalu memanggil `speechSynthesis.cancel()`; dipanggil di awal penanganan ketukan pilihan, juga pada Mode Ulangan
+- `sw.js`: cache `ulangan-v0.46`
 
 ### v0.45
 - **Cadangan otomatis ke berkas** lewat `cadOto()`: pengaturan di Layar pendamping (`DB.cfg.cao`: 0 mati, 5 atau 10 latihan); setiap layar hasil menambah hitungan (`DB.cfg.cac`), dan saat tercapai berkas `cadangan-latihan-ulangan-TANGGAL.json` diunduh otomatis. Bergantung pada browser: bila unduhan otomatis diblokir, muncul pesan dan cadangan manual tetap bisa dipakai

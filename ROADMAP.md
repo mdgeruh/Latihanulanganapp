@@ -1,6 +1,6 @@
 # Roadmap: Latihan Ulangan Kelas 1 SD
 
-Status per v0.45. Tanda [x] selesai, [ ] belum.
+Status per v0.54. Tanda [x] selesai, [ ] belum.
 
 ## Selesai
 - [x] Fase 1 (v0.1): MVP, skor bintang, suara pembaca soal, mode pendamping
@@ -45,6 +45,15 @@ Status per v0.45. Tanda [x] selesai, [ ] belum.
 - [x] Fase 40 (v0.43): pengecoh Penjumlahan dan Pengurangan dari kesalahan umum anak, Pola kesalahan hitung di Layar pendamping
 - [x] Fase 41 (v0.44): grafik Perkembangan per bab di Layar pendamping
 - [x] Fase 42 (v0.45): cadangan otomatis ke berkas tiap 5 atau 10 latihan (opsional)
+- [x] Fase 43 (v0.46): bacaan soal berhenti saat jawaban diketuk
+- [x] Fase 44 (v0.47): hasil benar/salah dibacakan saat latihan
+- [x] Fase 45 (v0.48): tombol Ulangi bacaan, pengaturan bacakan benar/salah terpisah, Ulangi soal yang salah tadi
+- [x] Fase 46 (v0.49): penjelasan singkat tampil dan dibacakan saat jawaban salah (bisa dimatikan)
+- [x] Fase 47 (v0.50): Nilai 0 sampai 100 di layar hasil
+- [x] Fase 48 (v0.51): soal otomatis Pendidikan Pancasila (lambang, bunyi sila, sikap)
+- [x] Fase 49 (v0.52): soal otomatis Membaca kalimat (bacaan pendek dan pertanyaan isi)
+- [x] Fase 50 (v0.53): unggah soal dari berkas CSV dengan templat dan pratinjau
+- [x] Fase 51 (v0.54): sorotan kata saat bacaan Membaca kalimat dibacakan (bila perangkat mendukung)
 
 ## Berikutnya: uji coba (dilakukan pengguna)
 - [ ] Uji dengan 1 anak (anak sendiri) memakai daftar uji coba di README.md
@@ -52,14 +61,14 @@ Status per v0.45. Tanda [x] selesai, [ ] belum.
 - [ ] Catat bagian yang terasa membosankan atau sulit bagi anak
 - [ ] Periksa apakah pilihan a sampai d dan suara bacaan mudah dipahami
 
-## Usulan berikutnya: unggah soal dari berkas (rencana v0.46)
+## Selesai: unggah soal dari berkas (v0.53)
 Pendamping bisa memasukkan banyak soal sekaligus dari berkas CSV (dari Excel atau Google Sheets), tanpa menulis satu per satu. Memakai jalur soal sendiri yang sudah ada (`DB.sd`), jadi soal langsung ikut latihan, Campuran, Mode Ulangan, kunci jawaban, dan cadangan.
-- [ ] Templat CSV yang bisa diunduh dari Layar pendamping. Kolom: pelajaran, bab, gambar (boleh kosong), pertanyaan, jawaban benar, pengecoh 1-3, catatan pendamping; pelajaran dan bab ditulis dengan namanya
-- [ ] Baca berkas CSV (dengan tanda kutip dan baris baru dalam sel) dan periksa tiap baris dengan aturan yang sama seperti formulir soal sendiri: pertanyaan terisi, empat pilihan terisi dan berbeda, pelajaran dan bab dikenali, batas panjang teks, soal kembar dilewati
-- [ ] Layar pratinjau sebelum menyimpan: ringkasan jumlah soal valid dan ditolak beserta alasan per baris (contoh: "baris 9: bab tidak ada"); soal baru tersimpan hanya setelah tombol Simpan
-- [ ] Simpan soal valid ke `DB.sd` (teks tetap di-escape saat tampil), batas sekitar 200 soal per unggahan karena penyimpanan browser terbatas
-- [ ] Tetap offline dan hanya di Layar pendamping (bisa dikunci PIN); soal bawaan di `soal.js` tidak berubah, mengganti soal bawaan tetap lewat tanda 🚩 dan soal pengganti
-- [ ] Tambahkan ke skrip uji (`uji/uji-alur.py`) dan README (cara mengisi templat)
+- [x] Templat CSV yang bisa diunduh dari Layar pendamping. Kolom: pelajaran, bab, gambar (boleh kosong), pertanyaan, jawaban benar, pengecoh 1-3, catatan pendamping; pelajaran dan bab ditulis dengan namanya
+- [x] Baca berkas CSV (dengan tanda kutip dan baris baru dalam sel) dan periksa tiap baris dengan aturan yang sama seperti formulir soal sendiri: pertanyaan terisi, empat pilihan terisi dan berbeda, pelajaran dan bab dikenali, batas panjang teks, soal kembar dilewati
+- [x] Layar pratinjau sebelum menyimpan: ringkasan jumlah soal valid dan ditolak beserta alasan per baris (contoh: "baris 9: bab tidak ada"); soal baru tersimpan hanya setelah tombol Simpan
+- [x] Simpan soal valid ke `DB.sd` (teks tetap di-escape saat tampil), batas sekitar 200 soal per unggahan karena penyimpanan browser terbatas
+- [x] Tetap offline dan hanya di Layar pendamping (bisa dikunci PIN); soal bawaan di `soal.js` tidak berubah, mengganti soal bawaan tetap lewat tanda 🚩 dan soal pengganti
+- [x] Tambahkan ke skrip uji (`uji/uji-alur.py`) dan README (cara mengisi templat)
 
 ## Saran improvement (v0.36, Tinggi sudah selesai)
 Disusun setelah semua saran v0.21 selesai. Prioritas Tinggi mendukung uji coba dengan anak; tetap sesuaikan dengan hasil uji coba.
@@ -108,9 +117,9 @@ Urutan prioritas: Tinggi dikerjakan dulu, tetapi tetap sesuaikan dengan hasil uj
 - [x] Uji otomatis ringan untuk alur utama (mulai latihan, jawab, lewati, hasil)
 
 ## Usulan lama (belum diputuskan, tergantung hasil uji coba)
-- [ ] Menambah bank soal lagi bila 17 soal per bab masih cepat berulang
-- [ ] Menyesuaikan soal dan bab dengan buku atau materi guru yang dipakai
-- [ ] Memperbarui pengecoh yang terlalu mudah ditebak berdasarkan catatan uji coba
+- [x] Menambah bank soal lagi bila 17 soal per bab masih cepat berulang
+- [x] Menyesuaikan soal dan bab dengan buku atau materi guru yang dipakai
+- [x] Memperbarui pengecoh yang terlalu mudah ditebak berdasarkan catatan uji coba
 
 ## Catatan
 - Urutan di bagian Usulan mengikuti hasil uji coba; ubah bila temuan di lapangan berbeda
